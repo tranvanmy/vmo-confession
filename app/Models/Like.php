@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     use HasFactory;
+    protected $table = 'likes';
     protected $fillable = ['id','value','body'];
+
     public function commentable(){
         return $this->morphTo();
     }

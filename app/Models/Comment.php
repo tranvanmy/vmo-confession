@@ -9,8 +9,12 @@ class Comment extends Model
 {
     use HasFactory;
     protected $fillable = ['id','body'];
+    protected $table = 'comments';
     public function likes(){
         
         return $this->morphMany('App\Like','liketable');
+    }
+    public function post(){
+        return $this->belongsTo('App\Models\Post','id_post','id');
     }
 }

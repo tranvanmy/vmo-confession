@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChiTietBaiPostController;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -26,4 +27,6 @@ Route::post('dangnhap',[PagesController::class,'postDangnhap']);
 
 Route::get('homepage', [PageController::class,'getHomePage']);
 Route::post('search', [PageController::class,'getSearch']);
+
+Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
 

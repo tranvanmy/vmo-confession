@@ -57,7 +57,7 @@
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>
                         </form>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>

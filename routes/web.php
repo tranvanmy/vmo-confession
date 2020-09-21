@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('dangnhap',[PagesController::class,'getDangnhap']);
 Route::post('dangnhap',[PagesController::class,'postDangnhap']);
+
+Route::get('homepage', [PageController::class,'getHomePage']);
+Route::post('search', [PageController::class,'getSearch']);
+

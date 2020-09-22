@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title',150);
             $table->text('content');
             $table->integer('published');
-            $table->date('published_at');
+            $table->datetime('published_at');
             $table->timestamps();
             $table->foreign('id_category')
                     ->references('id')

@@ -2,6 +2,8 @@
 
  @section('content')
  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
  <!-- Page Content -->
  <div class="container">
     <div class="row">
@@ -19,8 +21,27 @@
             <table class="table table-striped table-bordered table-hover">
                 <tr align="center">
                     <th>
-                        {{$count_like}}
-                        <a href="">like   </a>
+                        @if ($like == true)
+                            
+
+                        <button id="button" class="btn btn-primary">
+                            <p id="like" name="like">
+                            {{$count_like}} Đã Like
+                        </button>
+                            
+                        @else 
+                            
+                            <button id="button" class="btn btn-primary">
+                                <p id="like" name="like">
+                                {{$count_like}} Like
+                            </button>
+                            
+                        @endif
+                            </p> 
+
+                    
+                    <input type="hidden" name="idPost" value={{$post->id}}>
+                        
                     </th>
                     <th>
                         {{$count_dislike}}
@@ -181,4 +202,5 @@
     <!-- /.row -->
 </div>
 <!-- end Page Content -->
+
 @endsection

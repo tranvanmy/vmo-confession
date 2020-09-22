@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChiTietBaiPostController extends Controller
 {
@@ -25,9 +26,14 @@ class ChiTietBaiPostController extends Controller
         else
         $rate = 0;
         $postLienquan = Post::all()->where('published','like','1')->where('id_category','like',$post->id_category)->take(3);
-
         $postMoinhat = Post::where('published','1')->orderBy('published_at','desc')->take(3)->get();
-        return view('pages.chitietbaipost',['post'=>$post,'count_like'=>$count_like,'count_dislike'=>$count_dislike,'rate'=>$rate,'postLienquan'=>$postLienquan,'postMoinhat'=>$postMoinhat]);
+
+        if(null == Auth::user()->likes->where('value',1)->where('likeable_type', '=', 'App\Models\Post')->where('likeable_id', '=', $id)){
+            $like = true;
+        }else{
+            $like = false;
+        }
+        return view('pages.chitietbaipost',['post'=>$post,'count_like'=>$count_like,'count_dislike'=>$count_dislike,'rate'=>$rate,'postLienquan'=>$postLienquan,'postMoinhat'=>$postMoinhat,'like'=>$like]);
     }
 
     public function postComment($idPost,Request $request){

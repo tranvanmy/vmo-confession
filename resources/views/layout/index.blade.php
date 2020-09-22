@@ -10,15 +10,16 @@
     <meta name="author" content="">
 
     <title>@yield('title')</title>
+
     <base href="{{ asset('') }}">
     <!-- Bootstrap Core CSS -->
    
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
-
 
     @yield('css')
 
@@ -48,6 +49,7 @@
     @yield('script')
 
 
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -56,6 +58,7 @@
     </script>
     <script src="js/demo.js"></script>
     
+
 </body>
 
 </html>

@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->Increments('id');
             $table->integer('id_post')->unsigned();
             $table->text('body');
-            $table->integer('id_parent')->unsigned();
+            $table->integer('id_parent')->unsigned()->nullable();
             $table->foreign('id_parent')
                     ->references('id')
                     ->on('comments')

@@ -9,16 +9,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">VMO-Confession</a>
+
+            <a class="navbar-brand" href="homepage">VMO-Confession</a>
+
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
+
                     <a href="#">Giới thiệu</a>
                 </li>
                 <li>
                     <a href="#">Liên hệ</a>
+
                 </li>
             </ul>
 
@@ -34,7 +38,9 @@
             <ul class="nav navbar-nav pull-right">
                 @if(Auth::check())
                     <li>
-                        <a href="user">
+
+                        <a href="nguoidung">
+
                             <span class="glyphicon glyphicon-user"></span>
                             {{ Auth::user()->name }}
                         </a>

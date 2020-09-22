@@ -11,12 +11,15 @@ class Post extends Model
     protected $table = 'posts';
     protected $fillable = ['id','content','title'];
     public function likes(){
-        return $this->morphMany('App\Like','liketable');
+        return $this->morphMany('App\Models\Like','likeable');
     }
-    public function comment(){
+    public function comments(){
         return $this->hasMany('App\Models\Comment','id_post','id');
     }
-    public function vote(){
+    public function votes(){
         return $this->hasMany('App\Models\Vote','id_post','id');
+    }
+    public function category(){
+        return $this->belongsTo('App\Models\Category','id_category','id');
     }
 }

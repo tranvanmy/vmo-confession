@@ -10,6 +10,7 @@ use App\Http\Controllers\PagesController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

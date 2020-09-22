@@ -15,8 +15,9 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             ['title'=>'Lặt vặt'],
-            ['title'=>'Lượng lậu'],
-            ['title'=>'Nói xấu xếp'],]
+            ['title'=>'Lương lậu'],
+            ['title'=>'Nói xấu xếp'],
+            ['title'=>'Điều hòa']]
         );
     }
 }

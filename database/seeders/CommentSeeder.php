@@ -30,10 +30,22 @@ class CommentSeeder extends Seeder
             ['id_post'=>2,
             'body'=>'6 rưỡi chiều chưa biết ai giàu hơn ai =))) bạn nam said',
             ],
-            ['id_post'=>2,
-            'body'=>'6 rưỡi chiều chưa biết ai giàu hơn ai =))) bạn nam said'
-            
-            ],
+            // ['id_post'=>1,
+            // 'body'=>'6 rưỡi chiều chưa biết ai giàu hơn ai =))) bạn nam said',
+            // 'id_parent'=>1,
+            // ],
+            // ['id_post'=>1,
+            // 'body'=>'6 rưỡi chiều chưa biết ai giàu hơn ai =))) bạn nam said',
+            // 'id_parent'=>2,
+            // ],
+            // ['id_post'=>1,
+            // 'body'=>'6 rưỡi chiều chưa biết ai giàu hơn ai =))) bạn nam said',
+            // 'id_parent'=>2,
+            // ],
+            // ['id_post'=>1,
+            // 'body'=>'6 rưỡi chiều chưa biết ai giàu hơn ai =))) bạn nam said',
+            // 'id_parent'=>1,
+            // ]
             ]);
             
     }

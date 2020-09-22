@@ -12,43 +12,23 @@
             <!-- Blog Post -->
 
             <!-- Title -->
-            <h1>{{$tintuc->TieuDe}}</h1>
+            {{-- <h3>{{$post->category->title}}</h3> --}}
+            <h1>{{$post->title}}</h1>
 
-            <!-- Author -->
-            <p class="lead">
-                by <a href="#">admin</a>
-            </p>
-
-            <!-- Preview Image -->
-            <img class="img-responsive" src="upload/tintuc/{{$tintuc->Hinh}}" alt="">
-
-            <!-- Date/Time -->
-            <p><span class="glyphicon glyphicon-time"></span>{{$tintuc->created_at}}</p>
-            <hr>
-
-            
-            {{-- <a class="glyphicon glyphicon-thumbs-up" href="">like</a>
-            <a class="button is-success is-medium is-rounded button-review" href="">comment</a>
-            <a href="">rate</a>
-            <select name="theloai" id = "theloai">
-
-                    <option value="1">{{1}}</option>
-                    <option value="2">{{2}}</option>
-                    <option value="3">{{3}}</option>
-                    <option value="4">{{4}}</option>
-                    <option value="5">{{5}}</option>
-                    
-            </select> --}}
+            <p class="lead">{!!$post->content!!}</p>
             <table class="table table-striped table-bordered table-hover">
                 <tr align="center">
                     <th>
-                        <a href="">like</a>
+                        {{$count_like}}
+                        <a href="">like   </a>
                     </th>
                     <th>
-                        <a href="">comment</a>
+                        {{$count_dislike}}
+                        <a href="">dislike</a>
                     </th>
                     <th>
-                        <a href="">rate</a>
+                        {{number_format($rate ,2)}}
+                        <a href="">rate   </a>
                         <select name="theloai" id = "theloai">
 
                             <option value="1">{{1}}</option>
@@ -57,19 +37,18 @@
                             <option value="4">{{4}}</option>
                             <option value="5">{{5}}</option>
                             
-                    </select>
+                        </select>
                     </th>
                     
                 </tr>
             </table>
             <!-- Post Content -->
-            <p class="lead">{!!$tintuc->NoiDung!!}</p>
+            {{-- <p class="lead">{!!$tintuc->NoiDung!!}</p> --}}
             
             <!-- Blog Comments -->
 
             <!-- Comments Form -->
-            @if (Auth::check())
-
+            
             @if (count($errors) > 0)
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $err)
@@ -80,7 +59,7 @@
 
             <div class="well">
                 <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                <form role="form" action="comment/{{$tintuc->id}}" method="post" >
+                <form role="form" action="comment/{{$post->id}}" method="post" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
                     <div class="form-group">
                         <textarea class="form-control" rows="3" name="NoiDung"></textarea>
@@ -89,42 +68,51 @@
                 </form>
             </div>
 
-            @endif
+           
 
             <!-- Posted Comments -->
 
             <!-- Comment -->
-            <?php $comment = $tintuc->comment;
+            <?php $comments = $post->comments->where('id_parent','like',NULL);
             ?>
-            @foreach ($comment as $cm)
+
+            @foreach ($comments as $cm)
             
             <div class="media" >
                 <a class="pull-left" href="#">
-                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    <img class="media-object" src="image/user/user_icon_153312.png" alt="">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading">{{$cm->user->name}}
+                    <h4 class="media-heading">User
                         <small>{{$cm->created_at}}</small>
                     </h4>
                     <div class="well">
-                    {{$cm->NoiDung}}
+                    {{$cm->body}}
                     <h6>
                         <a href="">like</a>
-                        <a href="">comment</a>
+                        
                     </h6>
+
+                    <?php
+                        $cmparent = $cm->comments;
+                    ?>
+
+                    @foreach ($cmparent as $cmchil)
                     <div>
-                        {{"repvomment"}}
+                        {{$cmchil->body}}
                         <h6>
                             <a href="">like</a>
-                            <a href="">comment</a>
                         </h6>
                     </div>
+                    @endforeach
                     </div>
                     <div>
-                        <label>nhập bình luận</label>
-                          <input type="text" class="form-control" name="password">
-                          <button type="button" >bình luận
-                        </button>
+                        <label>nhập bình luận...</label>
+                        <form role="form" action="repcomment/{{$cm->id}}/{{$post->id}}" method="post" >
+                            <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                            <input type="text" class="form-control" name="repcomment">
+                            <button type="submit" >bình luận</button>
+                        </form>
                     </div>
                     
                 </div>
@@ -141,19 +129,19 @@
                 <div class="panel-heading"><b>Tin liên quan</b></div>
                 <div class="panel-body">
 
-                    @foreach ($tinlienquan as $tlq)
+                    @foreach ($postLienquan as $plq)
                         
                     <!-- item -->
                     <div class="row" style="margin-top: 10px;">
                         <div class="col-md-5">
-                            <a href="tintuc/{{$tlq->id}}/{{$tlq->TieuDeKhongDau}}.html">
-                                <img class="img-responsive" src="upload/tintuc/{{$tlq->Hinh}}" alt="">
+                            <a href="">
+                                <img class="img-responsive" src="image/user/user_icon_153312.png" alt="">
                             </a>
                         </div>
                         <div class="col-md-7">
-                            <a href="tintuc/{{$tlq->id}}/{{$tlq->TieuDeKhongDau}}.html"><b>{!!$tlq->TieuDe!!}</b></a>
+                            <a href="chitietbaipost/{{$plq->id}}"><b>{!!$plq->category->title!!}</b></a>
                         </div>
-                        <p style="padding-left: 5px">{!!$tlq->TomTat!!}</p>
+                        <p style="padding-left: 5px">{!!$plq->title!!}</p>
                         <div class="break"></div>
                     </div>
                     <!-- end item -->
@@ -163,22 +151,22 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading"><b>Tin nổi bật</b></div>
+                <div class="panel-heading"><b>Tin mới nhất</b></div>
                 <div class="panel-body">
 
-                    @foreach ($tinnoibat as $tnb)
+                    @foreach ($postMoinhat as $pmn)
 
                     <!-- item -->
                     <div class="row" style="margin-top: 10px;">
                         <div class="col-md-5">
-                            <a href="tintuc/{{$tnb->id}}/{{$tnb->TieuDeKhongDau}}.html">
-                                <img class="img-responsive" src="upload/tintuc/{{$tnb->Hinh}}" alt="">
+                            <a href="">
+                                <img class="img-responsive" src="image/user/user_icon_153312.png" alt="">
                             </a>
                         </div>
                         <div class="col-md-7">
-                            <a href="#"><b>{!!$tnb->TieuDe!!}</b></a>
+                            <a href="chitietbaipost/{{$pmn->id}}"><b>{!!$pmn->category->title!!}</b></a>
                         </div>
-                        <p style="padding-left: 5px">{!!$tnb->TomTat!!}</p>
+                        <p style="padding-left: 5px">{!!$pmn->title!!}</p>
                         <div class="break"></div>
                     </div>
                     <!-- end item -->

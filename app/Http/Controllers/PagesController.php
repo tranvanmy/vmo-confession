@@ -68,13 +68,11 @@ class PagesController extends Controller
             'password.max'=>'Password không được nhiều hơn 18 ký tự',
             'passwordAgain.required'=>'Bạn chưa nhập lại mật khẩu',
             'passwordAgain.same'=>'Mật khẩu nhập lại chưa khớp'
+            
+         ]);
         
-        ]);
-
-   
         $user = Auth::user();
         $user->name = $request->name;
-     
         $user->password = bcrypt($request->password);
         $user->save();
              return redirect('nguoidung')->with('thongbao','sửa thành công');

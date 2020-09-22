@@ -131,180 +131,122 @@
 
 
 
-<div class="space20"></div>
+    <div class="space20"></div>
 
 
-<div class="row main-left">
-    {{-- menu --}}
-    @include('layout.menu')
+    <div class="row main-left">
+        @include('layout.menu')
 
-    <div class="col-md-9">
-        <div class="panel panel-default">            
-            <div class="panel-heading" style="background-color:#337AB7; color:white;" >
-                <h2 style="margin-top:0px; margin-bottom:0px;">Laravel Tin Tức</h2>
-            </div>
 
-            <div class="well">
-                <form role="form" action="" method="post" >
-                    <h4>Viết title ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                    <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3" name="NoiDung"></textarea>
-                    </div>
-                    <h4>Viết bài đăng ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3" name="NoiDung"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Gửi</button>
-                </form>
-            </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color:#337AB7; color:white;">
+                    <h2 style="margin-top:0px; margin-bottom:0px;">VMO Confession</h2>
 
-        <div id="main">
-            <div class="container">
-              <h1 class="title-page"></h1>
-              <div class="group-tabs">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-                </ul>
-          
-                <!-- Tab panes -->
-                <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane active" id="home">
-                    <div class="panel-body">
-                        @foreach ($theloai as $tl)
-                        @if (count($tl->loaitin) > 0)
-                            
-                        <!-- item -->
-                        <div class="row-item row">
-                            <h3>
-                                <a href="category.html">{{$tl->Ten}}</a> 
-                                {{-- @foreach ($tl->loaitin as $lt) 
-    
-                                <small><a href="loaitin/{{$lt->id}}/{{$lt->TenKhongDau}}.html"><i>{{$lt->Ten}}</i></a>/</small>
-                            
-                                @endforeach --}}
-                            </h3>
-    
-                            <?php
-                                $data = $tl->tintuc->where('NoiBat',1)->sortByDesc('created_at')->take(5);
-                                //trong $data đang có 5 đối tượng lệnh shift() 
-                                //lấy ra một đối tượng và $data chỉ còn 4 đối tượng
-                                $tin1 = $data->shift(); 
-                                
-                            ?>
-    
-                            <div class="col-md-8 border-right">
-                                <div class="col-md-5">
-                                    <a href="tintuc/{{$tin1['id']}}/{{$tin1['TieuDeKhongDau']}}.html">
-                                        <img class="img-responsive" src="upload/tintuc/{{$tin1['Hinh']}}" alt="">
-                                    </a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Đăng bài viết
+                    </button>
+                    
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title textmodal" id="exampleModalLabel">Đăng bài</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-    
-                                <div class="col-md-7">
-                                    <h3>{{$tin1['TieuDe']}}</h3>
-                                    <p>{{$tin1['TomTat']}}</p>
-                                    <a class="btn btn-primary" href="tintuc/{{$tin1['id']}}/{{$tin1['TieuDeKhongDau']}}.html">Xem thêm<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                </div>
-    
+                                {{-- Start Popup --}}
+                                <form name="Mypost" action="Post" method="POST" onsubmit="return validate()">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <div class="modal-body">
+
+                                    <!-- Category -->
+                                    {{-- <div class="mb-3"> --}}
+                                        <select class="custom-select mr-sm-2"style="color:blue" id="category" name="category">
+                                            
+                                            <option selected value="0">Chọn Thể Loại</option>
+                                            @foreach($category as $tl)
+                                                <option value="{{ $tl->id }}">{{ $tl->title }}</option> 
+                                            @endforeach
+
+                                            
+                                        </select>
+                                        
+                                    {{-- </div> --}}
+                                        
+                                    <!-- end  -->
+                                        <div class="form-group">
+                                            <label class="textmodal" style="color:blue">Tiêu đề</label>
+                                            <input type="text" class="form-control" id="title" name="title" required>
+                                            <span id="titleloc"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1" style="color:blue">Nội dung</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" name="content"></textarea>
+                                                <span id="show-error"></span>
+                                        </div>
+
+
+                                    </div>
+                                <!-- ENDPOPUP -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button id="btn-save" type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+
                             </div>
-                            
-    
-                            <div class="col-md-4">
-    
-    
-                            </div>
-                            
-                            <div class="break"></div>
                         </div>
-                        <!-- end item -->
-    
-                        @endif
-                        @endforeach
-    
                     </div>
-                  </div>
-                  <div role="tabpanel" class="tab-pane" id="profile">
-                    <div class="panel-body">
-                        @foreach ($theloai as $tl)
-                        @if (count($tl->loaitin) > 0)
-                            
-                        <!-- item -->
-                        <div class="row-item row">
-                            <h3>
-                                <a href="category.html">{{$tl->Ten}}</a> 
-                                {{-- @foreach ($tl->loaitin as $lt) 
-    
-                                <small><a href="loaitin/{{$lt->id}}/{{$lt->TenKhongDau}}.html"><i>{{$lt->Ten}}</i></a>/</small>
-                            
-                                @endforeach --}}
-                            </h3>
-    
-                            <?php
-                                $data = $tl->tintuc->where('NoiBat',1)->sortByDesc('created_at')->take(5);
-                                //trong $data đang có 5 đối tượng lệnh shift() 
-                                //lấy ra một đối tượng và $data chỉ còn 4 đối tượng
-                                $tin1 = $data->shift(); 
-                                
-                            ?>
-    
-                            <div class="col-md-8 border-right">
-                                <div class="col-md-5">
-                                    <a href="tintuc/{{$tin1['id']}}/{{$tin1['TieuDeKhongDau']}}.html">
-                                        <img class="img-responsive" src="upload/tintuc/{{$tin1['Hinh']}}" alt="">
-                                    </a>
-                                </div>
-    
-                                <div class="col-md-7">
-                                    <h3>{{$tin1['TieuDe']}}</h3>
-                                    <p>{{$tin1['TomTat']}}</p>
-                                    <a class="btn btn-primary" href="tintuc/{{$tin1['id']}}/{{$tin1['TieuDeKhongDau']}}.html">Xem thêm<span class="glyphicon glyphicon-chevron-right"></span></a>
-                                </div>
-    
-                            </div>
-                            
-    
-                            <div class="col-md-4">
-    
-                                {{-- @foreach ($data as $item)
-                                    
-                                <a href="tintuc/{{$item->id}}/{{$item->TieuDeKhongDau}}.html">
-                                    <h4>
-                                        <span class="glyphicon glyphicon-list-alt"></span>
-                                        {{$item->TieuDe}}
-                                    </h4>
-                                </a>
-                               
-                                @endforeach --}}
-    
-                            </div>
-                            
-                            <div class="break"></div>
-                        </div>
-                        <!-- end item -->
-    
-                        @endif
-                        @endforeach
-    
-                    </div> 
-                  </div>
-                  <div role="tabpanel" class="tab-pane" id="messages">This is Messages content</div>
-                  <div role="tabpanel" class="tab-pane" id="settings">This is Settings content</div>
+                    <!-- End Modal -->
                 </div>
-              </div>
+                
+                @if(session('thongbao'))
+                    <div class="alert alert-success">
+                        {{ session('thongbao') }}
+                    </div>
+                @endif
+                {{-- @if(isset($post)) --}}
+                    @foreach($post as $pt)
+                    <hr>
+                    <h4>Vmo Confession</h4>
+                    <p>title: {{ $pt->title }}</p>
+                    <p>{{ $pt->content }}</p>
+                    <!-- con -->
+                    <button type="button" class="btn btn-primary" id="like">
+                        <span class="badge badge-light">Like</span>
+                        <span class="sr-only">unread messages</span>
+                    </button>
+                    <button type="button" class="btn btn-primary" id="like">
+                        <span class="badge badge-light">Dislike</span>
+                        <span class="sr-only">unread messages</span>
+                    </button>
+                    <button type="button" class="btn btn-primary" id="like">
+                        <span class="badge badge-light">Comment</span>
+                        <span class="sr-only">unread messages</span>
+                    </button>
+                @endforeach
+                {{-- @endif --}}
+                
+                
             </div>
-          </div>
-            <script src="../js/jquery-3.1.1.min.js" type=text/javascript></script>
-            <script src="../js/bootstrap.min.js" type=text/javascript></script>
-            <script src="../js/custom.js" type=text/javascript></script>
+
         </div>
     </div>
-</div>
-<!-- /.row -->
+    <!-- /.row -->
 </div>
 <!-- end Page Content -->
 @endsection
 
+{{-- @section('script')
+<script>
+    
+</script>
+
+@endsection --}}

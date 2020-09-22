@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 
-use App\Http\Controllers\PageController;
-
 
 
 /*
@@ -37,8 +35,9 @@ Route::post('Post', [PagesController::class,'Post']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 
-Route::get('homepage', [PageController::class,'getHomePage']);
+Route::get('homepage', [PagesController::class,'getHomePage']);
 Route::post('search', [PageController::class,'getSearch']);
+Route::post('Post', [PagesController::class,'Post']);
 
 Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
 

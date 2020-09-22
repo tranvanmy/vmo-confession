@@ -26,20 +26,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
 Route::get('dangnhap',[PagesController::class,'getDangnhap']);
 Route::post('dangnhap',[PagesController::class,'postDangnhap']);
 
+Route::get('nguoidung',[PagesController::class,'getNguoiDung'])->middleware('loginmiddleware');
+Route::post('nguoidung',[PagesController::class,'postNguoiDung']);
 
-Route::get('homepage', [PagesController::class,'getHomePage']);
+
+
+Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('loginmiddleware');
+
+
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
 
+
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 
-Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
+ 
 
-Route::get('nguoidung',[PagesController::class,'getNguoiDung']);
-Route::post('nguoidung',[PagesController::class,'postNguoiDung']);
+Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet'])->middleware('loginmiddleware');
+
+
 
 
 

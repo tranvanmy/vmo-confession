@@ -15,13 +15,15 @@ class LoginMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-        if(Auth::check())
-        {
-            return $next($request);
-        }
-            else 
-                return redirect('dangnhap');
+     if(Auth::check())
+     {  
+
+        return $next($request);
+
+     }
+     else 
+        return redirect('dangnhap');
     }
 }

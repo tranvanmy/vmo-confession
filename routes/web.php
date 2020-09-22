@@ -35,10 +35,6 @@ Route::post('Post', [PagesController::class,'Post']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 
-Route::get('homepage', [PagesController::class,'getHomePage']);
-Route::post('search', [PageController::class,'getSearch']);
-Route::post('Post', [PagesController::class,'Post']);
-
 Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
 
 Route::get('nguoidung',[PagesController::class,'getNguoiDung']);

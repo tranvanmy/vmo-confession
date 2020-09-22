@@ -17,6 +17,21 @@ class VoteSeeder extends Seeder
         DB::table('votes')->insert([
             ['id_post'=>1, 'point'=>4],
             ['id_post'=>2, 'point'=>5],
+            ['id_post'=>3, 'point'=>5],
+            ['id_post'=>1, 'point'=>4],
+            ['id_post'=>2, 'point'=>2],
+            ['id_post'=>3, 'point'=>3],
+            ['id_post'=>1, 'point'=>1],
+            ['id_post'=>2, 'point'=>3],
+            ['id_post'=>3, 'point'=>5],
+            ['id_post'=>1, 'point'=>4],
+            ['id_post'=>2, 'point'=>2],
+            ['id_post'=>3, 'point'=>5],
+            ['id_post'=>1, 'point'=>1],
+            ['id_post'=>2, 'point'=>2],
+            ['id_post'=>3, 'point'=>4],
+            ['id_post'=>1, 'point'=>1],
+            ['id_post'=>2, 'point'=>3],
             ['id_post'=>3, 'point'=>5],]
         
         );

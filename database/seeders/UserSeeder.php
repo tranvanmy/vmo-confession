@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
 
 
-            ['name'=>'vinh xinh gái',
+            ['name'=>'vinh Bigcityboi',
             'email'=>'vinh@vmo.vn',
             'password'=>bcrypt('123456')],
             ['name'=>'vinh ngu',

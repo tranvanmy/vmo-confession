@@ -83,7 +83,7 @@ class PagesController extends Controller
     }
     public function getHomePage()
     {
-        $post = Post::where('published','1')->get();
+        $post = Post::where('published','1')->orderBy('published_at','DESC')->get();
 		// $post = Post::all();
         
         return view('pages.trangchu',['post'=>$post]);
@@ -91,14 +91,42 @@ class PagesController extends Controller
     public function getSearch(Request $request)
     {
         $keyword = $request->keyword;
+        $id_category = $request->category;
+
         if($request->category == 0){
-            $post = Post::where('title','like',"%$keyword%")->orwhere('content','like',"%$keyword%")->take(30)->paginate(10);
+
+            // $post = Post::where('published',1)->where('title','like',"%$keyword%")
+            // ->orwhere('content','like',"%$keyword%")->orderBy('published','DESC')->take(30)->paginate(10);
+            $post = Post::where(function($query) use ($keyword){
+                $query->where('published',1)
+                    ->where('title','like',"%$keyword%");
+            })->orwhere(function($query) use ($keyword) {
+                $query->where('published',1)
+                    ->where('title','like',"%$keyword%");
+            })->orderBy('published_at','DESC')->take(30)->paginate(10);
         }else{
-            $category=Category::find($request->category);
-            $post = $category->post()->where('content','like',"%$keyword%")->get();
+            // $post = Category::find($request->category)->post()->where('title','like',"%$keyword%")
+            // // ->orwhere('content','like',"%$keyword%")
+            // ->get();
+            $post = Post::where(function($query) use ($keyword,$id_category){
+                    $query->where('title','like',"%$keyword%")
+                    ->where('published',1)
+                    ->whereHas('category',function($query) use ($id_category){
+                        $query->where('id',$id_category);
+                    });
+                })->orwhere(function($query) use ($keyword,$id_category){
+                $query->where('content','like',"%$keyword%")
+                ->where('published',1)
+                ->whereHas('category',function($query) use ($id_category){
+                    $query->where('id',$id_category);
+                });
+            })->orderBy('published_at','DESC')->take(30)->paginate(10);
+           
+            
         }
    
         return view('pages.search',['keyword'=>$keyword,'post'=>$post]);
+        // return view('pages.demo');
 	}
 	public function Post(Request $request)
 	{
@@ -127,5 +155,18 @@ class PagesController extends Controller
 
 		$post->save();
 		return redirect('homepage')->with('thongbao','Đăng bài thành công,Bạn hãy chờ duyệt');
-	}
+    }
+    public function getPostbyCategory($id_category)
+    { 
+        // $post = Category::find($id_category)->post->where('published',1)
+        // ->orderBy('published_at','DESC')->get()->paginate(10);
+        $post = Post::where(function($query)use ($id_category) {
+            $query->where('published',1)
+            ->whereHas('category',function($query) use ($id_category) {
+                $query->where('id',$id_category);
+            });
+        })->take(100)->paginate(10);
+        $categoryPost = Category::find($id_category);
+        return view('pages.PostByCategory',['post'=>$post, 'categoryPost'=>$categoryPost]);
+    }
 }

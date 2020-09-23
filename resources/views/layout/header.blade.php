@@ -3,7 +3,8 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -27,10 +28,22 @@
             </ul>
 
             <form class="navbar-form navbar-left" role="search" action="search" method="POST">
-                 @csrf
+                @csrf
                 <div class="form-group">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="text" name="keyword" class="form-control" placeholder="Search">
+                </div>
+                <div class="form-group">
+
+                    <select class="form-control" name="category" style="color: blu">
+                        <option value="0" selected>Tất Cả thể loại</option>
+                        @foreach($category as $tl)
+
+                            <option value={{ $tl->id }}>{{ $tl->title }}</option>
+
+                        @endforeach
+
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-default">Tìm kiếm</button>
             </form>

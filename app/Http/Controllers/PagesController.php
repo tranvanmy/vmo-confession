@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
@@ -89,7 +91,12 @@ class PagesController extends Controller
     public function getSearch(Request $request)
     {
         $keyword = $request->keyword;
-        $post = Post::where('title','like',"%$keyword%")->orwhere('content','like',"%$keyword%")->take(30)->paginate(10);
+        if($request->category == 0){
+            $post = Post::where('title','like',"%$keyword%")->orwhere('content','like',"%$keyword%")->take(30)->paginate(10);
+        }else{
+            $category=Category::find($request->category);
+            $post = $category->post()->where('content','like',"%$keyword%")->get();
+        }
    
         return view('pages.search',['keyword'=>$keyword,'post'=>$post]);
 	}

@@ -25,31 +25,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
-
 Route::get('dangnhap',[PagesController::class,'getDangnhap']);
 Route::post('dangnhap',[PagesController::class,'postDangnhap']);
 
-Route::get('nguoidung',[PagesController::class,'getNguoiDung'])->middleware('loginmiddleware');
-Route::post('nguoidung',[PagesController::class,'postNguoiDung']);
 
-
-
-Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('loginmiddleware');
-
-
+Route::get('homepage', [PagesController::class,'getHomePage']);
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
-Route::get('PostbyCategory/{id}', [PagesController::class,'getPostbyCategory']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 
- 
-
-Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet'])->middleware('loginmiddleware');
-
+Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
 
 
 Route::get('nguoidung',[PagesController::class,'getNguoiDung']);
@@ -61,3 +47,6 @@ Route::post('repcomment/{idcm}/{idpost}',[ChiTietBaiPostController::class,'postR
 
 Route::get('like/{id}',[AjaxLikeController::class,'getLike']);
 Route::get('dalike/{id}',[AjaxLikeController::class,'getDaLike']);
+
+Route::get('dislike/{id}',[AjaxLikeController::class,'getdisLike']);
+Route::get('dadislike/{id}',[AjaxLikeController::class,'getDadisLike']);

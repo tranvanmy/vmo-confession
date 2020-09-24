@@ -57,7 +57,7 @@ class AjaxLikeController extends Controller
         $like_create->likeable_id = $idPost;
         $like_create->save();
 
-        $count_like = count(Like::where('value','=',1)->where('likeable_type','=','App\Models\Post')->get());
+        $count_like = count(Like::where('value','=',1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->get());
         echo "<button id='btnDaLike' name='btnDaLike' value=".$post->id." class='btn btn-primary btn-dalike'>
             ".$count_like." Đã Like
             </button>";
@@ -67,9 +67,35 @@ class AjaxLikeController extends Controller
         //return "toanto";
         $post = Post::find($idPost);
         $like_delete = Like::where('id_user','=',Auth::user()->id)->where('value','=',1)->where('likeable_type','=','App\Models\Post')->delete();
-        $count_like = count(Like::where('value','=',1)->where('likeable_type','=','App\Models\Post')->get());
+        $count_like = count(Like::where('value','=',1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->get());
         echo "<button id='btnLike' name='btnLike' value=".$post->id." class='bg-dark text-white btn-like'>
             ".$count_like." Like
+            </button>";
+    }
+
+    public function getdisLike($idPost){
+        $post = Post::find($idPost);
+        
+        $dislike_create = new Like();
+        $dislike_create->id_user = Auth::user()->id;
+        $dislike_create->value = -1;
+        $dislike_create->likeable_type = 'App\Models\Post';
+        $dislike_create->likeable_id = $idPost;
+        $dislike_create->save();
+
+        $count_dislike = count(Like::where('value','=',-1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->get());
+        //return $count_dislike;
+        echo "<button id='btnDadisLike' name='btnDadisLike' value=".$post->id." class='btn btn-primary btn-dadislike'>
+            ".$count_dislike." Đã disLike
+            </button>";
+    }
+
+    public function getDadisLike($idPost){
+        $post = Post::find($idPost);
+        $dislike_delete = Like::where('id_user','=',Auth::user()->id)->where('value','=',-1)->where('likeable_type','=','App\Models\Post')->delete();
+        $count_dislike = count(Like::where('value','=',-1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->get());
+        echo "<button id='btndisLike' name='btndisLike' value=".$post->id." class='bg-dark text-white btn-dislike'>
+            ".$count_dislike." disLike
             </button>";
     }
 }

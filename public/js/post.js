@@ -26,7 +26,11 @@
 // });
 
 $(document).ready(function(){
+<<<<<<< HEAD
     alert('hahahh')
+=======
+    //alert('hahahh')
+>>>>>>> 63095385c91b82f0f2cc0fcf309b151716bb3e10
     $(document).on('click', '.btn-like', function(){
       var idPost = $('.btn-like').val();
       //console.log(idPost)
@@ -66,4 +70,8 @@ $(document).ready(function(){
   //   });
   // });
   
+<<<<<<< HEAD
   
+=======
+  
+>>>>>>> 63095385c91b82f0f2cc0fcf309b151716bb3e10

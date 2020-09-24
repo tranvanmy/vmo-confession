@@ -47,3 +47,6 @@ Route::post('repcomment/{idcm}/{idpost}',[ChiTietBaiPostController::class,'postR
 
 Route::get('like/{id}',[AjaxLikeController::class,'getLike']);
 Route::get('dalike/{id}',[AjaxLikeController::class,'getDaLike']);
+
+Route::get('dislike/{id}',[AjaxLikeController::class,'getdisLike']);
+Route::get('dadislike/{id}',[AjaxLikeController::class,'getDadisLike']);

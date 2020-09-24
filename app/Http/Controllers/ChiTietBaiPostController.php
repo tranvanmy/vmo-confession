@@ -38,7 +38,13 @@ class ChiTietBaiPostController extends Controller
         }else{
             $like = true;
         }
-        return view('pages.chitietbaipost',['post'=>$post,'count_like'=>$count_like,'count_dislike'=>$count_dislike,'rate'=>$rate,'postLienquan'=>$postLienquan,'postMoinhat'=>$postMoinhat,'like'=>$like]);
+
+        if(count($post->likes->where('id_user','=',Auth::user()->id)->where('value','=','-1')) >= 1){
+            $dislike = false;
+        }else{
+            $dislike = true;
+        }
+        return view('pages.chitietbaipost',['post'=>$post,'count_like'=>$count_like,'count_dislike'=>$count_dislike,'rate'=>$rate,'postLienquan'=>$postLienquan,'postMoinhat'=>$postMoinhat,'like'=>$like,'dislike'=>$dislike]);
     }
 
     public function postComment($idPost,Request $request){

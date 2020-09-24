@@ -26,14 +26,16 @@
 // });
 
 $(document).ready(function(){
-    //alert('hahahh')
+    //like
     $(document).on('click', '.btn-like', function(){
       var idPost = $('.btn-like').val();
       //console.log(idPost)
         $.get('like/'+idPost,function(data){
-          //alert(data);
           $("#like").html(data);
         });
+        $.get('dadislike/'+idPost,function(data){
+          $("#dislike").html(data);
+      });
     })
   
     $(document).on('click', '.btn-dalike', function(){
@@ -44,6 +46,26 @@ $(document).ready(function(){
         $("#like").html(data);
       });
     })
+    
+    //dislike
+    $(document).on('click','.btn-dislike', function(){
+      //alert("12345")
+        var idPost = $('.btn-dislike').val();
+        $.get('dislike/'+idPost,function(data){
+            $("#dislike").html(data);
+        });
+        $.get('dalike/'+idPost,function(data){
+            $("#like").html(data);
+        });
+    });
+
+    $(document).on('click','.btn-dadislike', function(){
+      var idPost = $('.btn-dadislike').val();
+      $.get('dadislike/'+idPost,function(data){
+          $("#dislike").html(data);
+      });
+    });
+
   });
   
   // $(document).ready(function(){

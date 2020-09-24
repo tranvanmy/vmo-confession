@@ -20,27 +20,24 @@
             <p class="lead">{!!$post->content!!}</p>
             <table class="table table-striped table-bordered table-hover">
                 <tr align="center">
-                    <th>
+                    {{-- <input type="hidden" name="idPost" id="idPost" value={{$post->id}}> --}}
+                    <th id="like">
+                        
                         @if ($like == true)
-                            
-
-                        <button id="button" class="btn btn-primary">
-                            <p id="like" name="like">
-                            {{$count_like}} Đã Like
-                        </button>
-                            
-                        @else 
-                            
-                            <button id="button" class="btn btn-primary">
-                                <p id="like" name="like">
+                        
+                            <button id="btnLike" name="btnLike" value="{{$post->id}}" class="bg-dark text-white btn-like">
+                            {{-- <p id="like" name="like"> --}}
                                 {{$count_like}} Like
                             </button>
-                            
-                        @endif
-                            </p> 
-
-                    
-                    <input type="hidden" name="idPost" value={{$post->id}}>
+                          
+                        @else 
+                        
+                            <button id="btnDaLike" name="btnDaLike" value="{{$post->id}}" class="btn btn-primary btn-dalike" >
+                                {{-- <p id="like" name="like"> --}}
+                                {{$count_like}} Đã Like
+                            </button>
+                         
+                        @endif 
                         
                     </th>
                     <th>

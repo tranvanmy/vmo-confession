@@ -18,7 +18,7 @@
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color:#337AB7; color:white;">
-                    <h2 style="margin-top:0px; margin-bottom:0px;">VMO Confession</h2>
+                    <h2 style="margin-top:0px; margin-bottom:0px;">Thể Loại: {{$categoryPost->title}}</h2>
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -46,10 +46,12 @@
                                         {{-- <div class="mb-3"> --}}
                                         <select class="custom-select mr-sm-2" style="color:blue" id="category"
                                             name="category">
-
                                             <option selected value="0">Chọn Thể Loại</option>
+                                            
                                             @foreach($category as $tl)
+                                        
                                                 <option value="{{ $tl->id }}">{{ $tl->title }}</option>
+                                            
                                             @endforeach
                                         </select>
 

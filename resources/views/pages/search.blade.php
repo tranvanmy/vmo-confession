@@ -30,7 +30,7 @@
                 @else 
                     @foreach($post as $pt)
                     <h4>Vmo Confession</h4>
-                    <p><b>title: {!! changecolor($pt->title,$keyword) !!}</b></p>
+                    <p><b>#{{ $pt->id }}: {!! changecolor($pt->title,$keyword) !!}</b></p>
                     <p>{!! changecolor($pt->content,$keyword) !!}</p>
                     <!-- con -->
                     <button type="button" class="btn btn-primary" id="like">

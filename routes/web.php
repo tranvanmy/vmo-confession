@@ -43,7 +43,7 @@ Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('logi
 
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
-
+Route::get('PostbyCategory/{id}', [PagesController::class,'getPostbyCategory']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 

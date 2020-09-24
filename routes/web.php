@@ -1,8 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\AjaxLikeController;
 use App\Http\Controllers\ChiTietBaiPostController;
-
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -53,5 +52,12 @@ Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet'])
 
 
 
+Route::get('nguoidung',[PagesController::class,'getNguoiDung']);
+Route::post('nguoidung',[PagesController::class,'postNguoiDung']);
 
+Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
+Route::post('comment/{id}',[ChiTietBaiPostController::class,'postComment']);
+Route::post('repcomment/{idcm}/{idpost}',[ChiTietBaiPostController::class,'postRepComment']);
 
+Route::get('like/{id}',[AjaxLikeController::class,'getLike']);
+Route::get('dalike/{id}',[AjaxLikeController::class,'getDaLike']);

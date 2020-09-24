@@ -2,6 +2,8 @@
 
  @section('content')
  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
  <!-- Page Content -->
  <div class="container">
     <div class="row">
@@ -18,9 +20,25 @@
             <p class="lead">{!!$post->content!!}</p>
             <table class="table table-striped table-bordered table-hover">
                 <tr align="center">
-                    <th>
-                        {{$count_like}}
-                        <a href="">like   </a>
+                    {{-- <input type="hidden" name="idPost" id="idPost" value={{$post->id}}> --}}
+                    <th id="like">
+                        
+                        @if ($like == true)
+                        
+                            <button id="btnLike" name="btnLike" value="{{$post->id}}" class="bg-dark text-white btn-like">
+                            {{-- <p id="like" name="like"> --}}
+                                {{$count_like}} Like
+                            </button>
+                          
+                        @else 
+                        
+                            <button id="btnDaLike" name="btnDaLike" value="{{$post->id}}" class="btn btn-primary btn-dalike" >
+                                {{-- <p id="like" name="like"> --}}
+                                {{$count_like}} Đã Like
+                            </button>
+                         
+                        @endif 
+                        
                     </th>
                     <th>
                         {{$count_dislike}}
@@ -48,8 +66,7 @@
             <!-- Blog Comments -->
 
             <!-- Comments Form -->
-            @if (Auth::check())
-
+            
             @if (count($errors) > 0)
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $err)
@@ -60,7 +77,7 @@
 
             <div class="well">
                 <h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-                <form role="form" action="" method="post" >
+                <form role="form" action="comment/{{$post->id}}" method="post" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
                     <div class="form-group">
                         <textarea class="form-control" rows="3" name="NoiDung"></textarea>
@@ -69,12 +86,12 @@
                 </form>
             </div>
 
-            @endif
+           
 
             <!-- Posted Comments -->
 
             <!-- Comment -->
-            <?php $comments = $post->comments;
+            <?php $comments = $post->comments->where('id_parent','like',NULL);
             ?>
 
             @foreach ($comments as $cm)
@@ -108,10 +125,10 @@
                     @endforeach
                     </div>
                     <div>
-                        <label>nhập bình luận</label>
-                        <form role="form" action="" method="post" >
+                        <label>nhập bình luận...</label>
+                        <form role="form" action="repcomment/{{$cm->id}}/{{$post->id}}" method="post" >
                             <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                            <input type="text" class="form-control" name="password">
+                            <input type="text" class="form-control" name="repcomment">
                             <button type="submit" >bình luận</button>
                         </form>
                     </div>
@@ -140,7 +157,7 @@
                             </a>
                         </div>
                         <div class="col-md-7">
-                            <a href=""><b>{!!$plq->category->title!!}</b></a>
+                            <a href="chitietbaipost/{{$plq->id}}"><b>{!!$plq->category->title!!}</b></a>
                         </div>
                         <p style="padding-left: 5px">{!!$plq->title!!}</p>
                         <div class="break"></div>
@@ -165,7 +182,7 @@
                             </a>
                         </div>
                         <div class="col-md-7">
-                            <a href="#"><b>{!!$pmn->category->title!!}</b></a>
+                            <a href="chitietbaipost/{{$pmn->id}}"><b>{!!$pmn->category->title!!}</b></a>
                         </div>
                         <p style="padding-left: 5px">{!!$pmn->title!!}</p>
                         <div class="break"></div>
@@ -182,4 +199,5 @@
     <!-- /.row -->
 </div>
 <!-- end Page Content -->
+
 @endsection

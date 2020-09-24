@@ -15,7 +15,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         DB::table('posts')->insert([
-            ['id_category'=>1, 
+            ['id_category'=>3, 
             'title'=>'Chia tiền với người yêu',
             'Content'=>'Ko biết chị em nào như mình ko? Mình là con gái nhưng kiểu người sòng phẳng, thực ra nếu có ai bao ăn bao tất thì cũng sướng thật và sướng thận đấy, nhưng mà cứ chia nhau cho nó sướng cả tâm nữa. Thoải mái, ăn xong đỡ phải nghĩ ngợi là họ bao mình sau mình phải bao ko, phải khao lại ko……v…v…
             Vì thế nên lúc yêu đương mình cũng không để người yêu thiệt thòi bao giờ. Đi chơi thì ông trả tiền ăn mình trả tiền nước. Người ta mua vé xem phim thì mình mua bỏng ngô. Cứ thế cho nó nhàn tâm. Hơn nữa để người yêu trả hết thì mình cũng thấy tội, ai cũng kiếm tiền vất vả mà nhỉ chứ có phải từ trên trời rơi xuống đâu.

@@ -28,41 +28,41 @@
 $(document).ready(function(){
     //like
     $(document).on('click', '.btn-like', function(){
-      var idPost = $('.btn-like').val();
+      var idPost = $(this).val();
       //console.log(idPost)
         $.get('like/'+idPost,function(data){
-          $("#like").html(data);
+          $("#like"+idPost).html(data);
         });
         $.get('dadislike/'+idPost,function(data){
-          $("#dislike").html(data);
+          $("#dislike"+idPost).html(data);
       });
     });
   
     $(document).on('click', '.btn-dalike', function(){
-      var idPost = $('.btn-dalike').val();
+      var idPost = $(this).val();
       //console.log(idPost)
       $.get('dalike/'+idPost,function(data){
         //alert(data);
-        $("#like").html(data);
+        $("#like"+idPost).html(data);
       });
     });
     
     //dislike
     $(document).on('click','.btn-dislike', function(){
       //alert("12345")
-        var idPost = $('.btn-dislike').val();
+        var idPost = $(this).val();
         $.get('dislike/'+idPost,function(data){
-            $("#dislike").html(data);
+            $("#dislike"+idPost).html(data);
         });
         $.get('dalike/'+idPost,function(data){
-            $("#like").html(data);
+            $("#like"+idPost).html(data);
         });
     });
 
     $(document).on('click','.btn-dadislike', function(){
-      var idPost = $('.btn-dadislike').val();
+      var idPost = $(this).val();
       $.get('dadislike/'+idPost,function(data){
-          $("#dislike").html(data);
+          $("#dislike"+idPost).html(data);
       });
     });
 

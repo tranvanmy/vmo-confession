@@ -30,9 +30,8 @@ Route::post('dangnhap',[PagesController::class,'postDangnhap']);
 Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('loginmiddleware');
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
-Route::get('PostbyCategory/{id}', [PagesController::class,'getPostbyCategory']);
-
-
+Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']); 
+Route::post('rating', [PagesController::class,'postRating']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 

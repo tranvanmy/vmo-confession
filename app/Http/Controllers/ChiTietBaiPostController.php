@@ -15,8 +15,8 @@ class ChiTietBaiPostController extends Controller
     public function getChitiet($id){
         $post = Post::find($id);
 
-        $count_like = count($post->likes->where('value','=','1'));
-        $count_dislike = count($post->likes->where('value','=','-1'));
+        // $count_like = count($post->likes->where('value','=','1'));
+        // $count_dislike = count($post->likes->where('value','=','-1'));
 
         $total_point = 0;
         foreach($post->votes as $vote){
@@ -32,19 +32,17 @@ class ChiTietBaiPostController extends Controller
         //return Auth::user()->id;
         //return count($post->likes->where('id_user','=',Auth::user()->id)->where('value','=','1'));
         //if(Auth::user()->likes->where('value',1)->where('likeable_type','App\Models\Post')->where('likeable_id', $id) == NULL){
-        if(count($post->likes->where('id_user','=',Auth::user()->id)->where('value','=','1')) >= 1){
+        // if(count($post->likes->where('id_user','=',Auth::user()->id)->where('value','=','1')) >= 1){
            
-            $like = false;
-        }else{
-            $like = true;
-        }
+        //     $like = false;
+        // }else{
+        //     $like = true;
+        // }
 
-        if(count($post->likes->where('id_user','=',Auth::user()->id)->where('value','=','-1')) >= 1){
-            $dislike = false;
-        }else{
-            $dislike = true;
-        }
-        return view('pages.chitietbaipost',['post'=>$post,'count_like'=>$count_like,'count_dislike'=>$count_dislike,'rate'=>$rate,'postLienquan'=>$postLienquan,'postMoinhat'=>$postMoinhat,'like'=>$like,'dislike'=>$dislike]);
+        
+        return view('pages.chitietbaipost',['post'=>$post,
+        'rate'=>$rate,'postLienquan'=>$postLienquan,
+        'postMoinhat'=>$postMoinhat]);
     }
 
     public function postComment($idPost,Request $request){

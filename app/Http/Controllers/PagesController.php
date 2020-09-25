@@ -169,4 +169,9 @@ class PagesController extends Controller
         $categoryPost = Category::find($id_category);
         return view('pages.PostByCategory',['post'=>$post, 'categoryPost'=>$categoryPost]);
     }
+    public function postRating(Request $request)
+    {
+        $rate = $request->rate;
+        return view('pages.demo',['rate'=>$rate]);
+    }
 }

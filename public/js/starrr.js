@@ -102,6 +102,7 @@ $('#star1').starrr({
     if (value) {
       $('.your-choice-was').show();
       $('.choice').text(value);
+      
     } else {
       $('.your-choice-was').hide();
     }

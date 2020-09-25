@@ -77,7 +77,7 @@ class PagesController extends Controller
         $user->name = $request->name;
      
         $user->password = bcrypt($request->password);
-        $user->save();
+        //$user->save();
         return redirect('nguoidung')->with('thongbao','sửa thành công');
 
     }

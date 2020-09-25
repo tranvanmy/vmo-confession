@@ -36,7 +36,7 @@ $(document).ready(function(){
         $.get('dadislike/'+idPost,function(data){
           $("#dislike").html(data);
       });
-    })
+    });
   
     $(document).on('click', '.btn-dalike', function(){
       var idPost = $('.btn-dalike').val();
@@ -45,7 +45,7 @@ $(document).ready(function(){
         //alert(data);
         $("#like").html(data);
       });
-    })
+    });
     
     //dislike
     $(document).on('click','.btn-dislike', function(){
@@ -65,6 +65,82 @@ $(document).ready(function(){
           $("#dislike").html(data);
       });
     });
+
+    //like comment
+    $(document).on('click', '.btn-likecm', function(){
+      var idComment = $(this).val();
+      //alert(idComment);
+        $.get('likecomment/'+idComment,function(data){
+          $("#like"+idComment).html(data);
+        });
+        $.get('dadislikecomment/'+idComment,function(data){
+          $("#dislike"+idComment).html(data);
+        });
+    });
+  
+    $(document).on('click', '.btn-dalikecm', function(){
+      var idComment = $(this).val();
+      //alert(idComment);
+      $.get('dalikecomment/'+idComment,function(data){
+        $("#like"+idComment).html(data);
+      });
+    });
+
+     //dislike comment
+    $(document).on('click', '.btn-dislikecm', function(){
+      var idComment = $(this).val();
+        $.get('dislikecomment/'+idComment,function(data){
+          $("#dislike"+idComment).html(data);
+        });
+        $.get('dalikecomment/'+idComment,function(data){
+          $("#like"+idComment).html(data);
+        });
+    });
+  
+    $(document).on('click', '.btn-dadislikecm', function(){
+      var idComment = $(this).val();
+      $.get('dadislikecomment/'+idComment,function(data){
+        $("#dislike"+idComment).html(data);
+      });
+     });
+
+      //like rep comment
+    $(document).on('click', '.btn-likecm-rep', function(){
+      var idComment = $(this).val();
+      //alert(idComment);
+        $.get('likecommentrep/'+idComment,function(data){
+          $("#like"+idComment).html(data);
+        });
+        $.get('dadislikecomment/'+idComment,function(data){
+          $("#dislike"+idComment).html(data);
+        });
+    });
+
+    $(document).on('click', '.btn-dalikecm-rep', function(){
+      var idComment = $(this).val();
+      //alert(idComment);
+      $.get('dalikecommentrep/'+idComment,function(data){
+        $("#like"+idComment).html(data);
+      });
+    });
+
+    //dislike rep comment
+    $(document).on('click', '.btn-dislikecm-rep', function(){
+      var idComment = $(this).val();
+        $.get('dislikecommentrep/'+idComment,function(data){
+          $("#dislike"+idComment).html(data);
+        });
+        $.get('dalikecomment/'+idComment,function(data){
+          $("#like"+idComment).html(data);
+        });
+    });
+  
+    $(document).on('click', '.btn-dadislikecm-rep', function(){
+      var idComment = $(this).val();
+      $.get('dadislikecommentrep/'+idComment,function(data){
+        $("#dislike"+idComment).html(data);
+      });
+     });
 
   });
   

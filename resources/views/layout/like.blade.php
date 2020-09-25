@@ -4,17 +4,17 @@
         <th id="like">
             
             @if ($like == true)
-            
+                {{$count_like}}
                 <button id="btnLike" name="btnLike" value="{{$post->id}}" class="bg-dark text-white btn-like">
                 {{-- <p id="like" name="like"> --}}
-                    {{$count_like}} Like
+                     Like
                 </button>
               
             @else 
-            
+                {{$count_like}}
                 <button id="btnDaLike" name="btnDaLike" value="{{$post->id}}" class="btn btn-primary btn-dalike" >
                     {{-- <p id="like" name="like"> --}}
-                    {{$count_like}} Đã Like
+                     Đã Like
                 </button>
              
             @endif 
@@ -23,17 +23,17 @@
         <th id="dislike">
             
          @if ($dislike == true)
-         
+            {{$count_dislike}} 
              <button id="btndisLike" name="btndisLike" value="{{$post->id}}" class="bg-dark text-white btn-dislike">
              {{-- <p id="like" name="like"> --}}
-                 {{$count_dislike}} disLike
+                disLike
              </button>
            
          @else 
-         
+            {{$count_dislike}}
              <button id="btnDadisLike" name="btnDadisLike" value="{{$post->id}}" class="btn btn-primary btn-dadislike" >
                  {{-- <p id="like" name="like"> --}}
-                 {{$count_dislike}} Đã disLike
+                  Đã disLike
              </button>
           
          @endif 

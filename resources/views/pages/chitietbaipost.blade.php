@@ -54,7 +54,21 @@
            ?>
 
            @foreach ($comments as $cm)
-           
+        
+           <?php
+                $count_likeCm = count($cm->likes->where('value',1));
+                $count_dislikeCm = count($cm->likes->where('value',-1));
+                if(count($cm->likes->where('id_user','=',Auth::user()->id)->where('value','=','1')) >= 1){
+                    $like_check = false;
+                }else{
+                    $like_check = true;
+                }
+                if(count($cm->likes->where('id_user','=',Auth::user()->id)->where('value','=','-1')) >= 1){
+                    $dislike_check = false;
+                }else{
+                    $dislike_check = true;
+                }
+            ?>
            <div class="media" >
                <a class="pull-left" href="#">
                    <img class="media-object" src="image/user/user_icon_153312.png" alt="">
@@ -66,8 +80,37 @@
                    <div class="well">
                    {{$cm->body}}
                    <h6>
-                       <a href="">like</a>
-                       
+                       <a id ='like{{$cm->id}}' class="likecm">
+                            {{$count_likeCm}}
+                            @if ($like_check == true)
+                
+                                <button id="btnLike" name="btnLike" value="{{$cm->id}}" class="btn-likecm">
+                                    Like
+                                </button>
+                            
+                            @else 
+                            
+                                <button id="btnDaLike" name="btnDaLike" value="{{$cm->id}}" class="btn-dalikecm" >
+                                    <font color="0000FF">Đã Like</font>
+                                </button>
+                            
+                            @endif 
+                        </a>
+                        <a id ="dislike{{$cm->id}}">
+                            {{$count_dislikeCm}}
+                            @if ($dislike_check == true)
+            
+                                <button id="btndisLike" name="btndisLike" value="{{$cm->id}}" class="btn-dislikecm">
+                                    disLike
+                                </button>
+                            
+                            @else 
+                                <button id="btnDadisLike" name="btnDadisLike" value="{{$cm->id}}" class="btn-dadislikecm" >
+                                    <font color="0000FF">Đã disLike</font>
+                                </button>
+                            
+                            @endif
+                        </a>
                    </h6>
 
                    <?php
@@ -75,16 +118,61 @@
                    ?>
 
                    @foreach ($cmparent as $cmchil)
-                   <div>
+                   <?php
+                        $count_likeCmchil = count($cmchil->likes->where('value',1));
+                        $count_dislikeCmchil = count($cmchil->likes->where('value',-1));
+                        if(count($cmchil->likes->where('id_user','=',Auth::user()->id)->where('value','=','1')) >= 1){
+                            $like_rep_check = false;
+                        }else{
+                            $like_rep_check = true;
+                        }
+                        if(count($cmchil->likes->where('id_user','=',Auth::user()->id)->where('value','=','-1')) >= 1){
+                            $dislike_rep_check = false;
+                        }else{
+                            $dislike_rep_check = true;
+                        }
+                    ?>
+                   <div class="well well-sm">
                        {{$cmchil->body}}
+                       
                        <h6>
-                           <a href="">like</a>
-                       </h6>
+                        <a id ='like{{$cmchil->id}}'>
+                            {{-- CHỖ ĐANG LÀM --}}
+                            {{$count_likeCmchil}}
+                             @if ($like_rep_check == true)
+                            
+                                 <button id="btnLikecmrep" name="btnLikecmrep" value="{{$cmchil->id}}" class="btn-likecm-rep">
+                                     Like
+                                 </button>
+                             
+                             @else 
+                             
+                                 <button id="btnDaLikecmrep" name="btnDaLikecmrep" value="{{$cmchil->id}}" class="btn-dalikecm-rep" >
+                                    <font color="0000FF">Đã Like</font>
+                                 </button>
+                             
+                             @endif 
+                         </a>
+                         <a id ="dislike{{$cmchil->id}}">
+                            {{$count_dislikeCmchil}}
+                             @if ($dislike_rep_check == true)
+             
+                                 <button id="btndisLikecmrep" name="btndisLikecmrep" value="{{$cmchil->id}}" class="btn-dislikecm-rep">
+                                     disLike
+                                 </button>
+                             
+                             @else 
+                                 <button id="btnDadisLikecmrep" name="btnDadisLikecmrep" value="{{$cmchil->id}}" class="btn-dadislikecm-rep" >
+                                    <font color="0000FF">Đã disLike</font>
+                                 </button>
+                             
+                             @endif
+                         </a>
+                    </h6>
+                        
                    </div>
                    @endforeach
-                   </div>
-                   <div>
-                       <label>nhập bình luận...</label>
+                   <label>nhập bình luận...</label>
                        <form role="form" action="repcomment/{{$cm->id}}/{{$post->id}}" method="post" >
                            <input type="hidden" name="_token" value="{{csrf_token()}}" />
                            <input type="text" class="form-control" name="repcomment">

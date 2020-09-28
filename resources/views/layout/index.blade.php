@@ -16,6 +16,7 @@
    
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
@@ -60,6 +61,8 @@
     <script src="js/demo.js"></script>
     <script src="js/post.js"></script>
     
+    <!-- <script src="js/post.js"></script> -->
+    <script src="js/starrr.js"></script>
     
 </body>
 

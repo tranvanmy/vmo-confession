@@ -83,10 +83,10 @@ class PagesController extends Controller
     }
     public function getHomePage()
     {
-        $post = Post::where('published','1')->orderBy('published_at','DESC')->get();
+        $posthome = Post::where('published','1')->orderBy('published_at','DESC')->get();
 		// $post = Post::all();
         
-        return view('pages.trangchu',['post'=>$post]);
+        return view('pages.trangchu',['posthome'=>$posthome]);
     }
     public function getSearch(Request $request)
     {
@@ -168,5 +168,10 @@ class PagesController extends Controller
         })->take(100)->paginate(10);
         $categoryPost = Category::find($id_category);
         return view('pages.PostByCategory',['post'=>$post, 'categoryPost'=>$categoryPost]);
+    }
+    public function postRating(Request $request)
+    {
+        $rate = $request->rate;
+        return view('pages.demo',['rate'=>$rate]);
     }
 }

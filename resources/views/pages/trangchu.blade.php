@@ -32,7 +32,8 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title textmodal" id="exampleModalLabel" style="color:blue">Đăng bài</h5>
+                                    <h5 class="modal-title textmodal" id="exampleModalLabel" style="color:blue">Đăng bài
+                                    </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -92,31 +93,34 @@
                     </div>
                 @endif
 
-                @foreach($post as $pt)
+<<<<<<< HEAD
+                @foreach($post as $post)
+                  
                     <hr>
                     <h4>Vmo Confession</h4>
                     <h5>
-                    <a href="chitietbaipost/{{$pt->id}}"><b>#{{ $pt->id }}:</b> {{ $pt->title }}</a>
+                    <a href="chitietbaipost/{{$post->id}}"><b>#{{ $post->id }}:</b> {{ $post->title }}</a>
                     </h5>
-                    <p>{{ $pt->content }}</p>
+=======
+                @foreach($posthome as $post)
+                  
+                    <hr>
+                    <h4>Vmo Confession</h4>
+                    <p><b>#{{ $post->id }}:</b> {{ $post->title }}</p>
+>>>>>>> 6766921... like dislike display
+                    <p>{{ $post->content }}</p>
                     <!-- con -->
                     <!-- <hr>
                 <p>2 like</p>
                 <hr> -->
-                    
-                    
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Like</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Dislike</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Comment</span>
+<<<<<<< HEAD
+                    @include('layout.like')
 
-                    </button>
+
+
+=======
+                    @include('layout.like');
+>>>>>>> 6766921... like dislike display
                 @endforeach
 
             </div>

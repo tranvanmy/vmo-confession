@@ -24,6 +24,9 @@
                     <li>
                         <a href="admin/post/danhsachdaduyet">Danh sách đã duyệt</a>
                     </li>
+                    <li>
+                        <a href="admin/post/them">Thêm</a>
+                    </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

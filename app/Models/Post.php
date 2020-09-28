@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = 'posts';
-    protected $fillable = ['id','content','title'];
+    //protected $fillable = ['id','content','title'];
     public function likes(){
         return $this->morphMany('App\Models\Like','likeable');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,5 +33,41 @@ class PostController extends Controller
 
         $post->save();
         return redirect('admin/post/danhsachchuaduyet')->with('thongbao','publish thành công');
+    }
+
+    public function getThem(){
+        $categories = Category::all();
+        return view('admin.post.them',['categories'=>$categories]);
+    }
+
+    public function postThem(Request $request){
+        $this->validate($request,
+            [
+                'category'=>'required',
+                'title'=>'required|min:3|unique:posts,title',
+                'content'=>'required',
+                'published'=>'required'
+            ]
+            ,[
+                'category.required'=>'bạn chưa chọn chủ đề',
+                'title.min'=>'tiêu đề cần ít nhất ba kí tự',
+                'title.unique'=>'tiêu đề đã tồn tại',
+                'content.required'=>'bạn chưa nhập nội dung',
+                'published.required'=>'bạn chưa nhập trạng thái bài post'
+            ]
+        );
+
+        $post = new Post();
+        $post->id_category = $request->category;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->published = $request->published;
+        //$post->published_at = $request->published_at;
+        if($request->published == 1){
+            $post->published_at = $request->published_at;
+        }
+        
+        $post->save();
+        return redirect('admin/post/them')->with('thongbao','thêm post thành công');
     }
 }

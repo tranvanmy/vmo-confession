@@ -93,6 +93,7 @@
                     </div>
                 @endif
 
+<<<<<<< HEAD
                 @foreach($post as $post)
                   
                     <hr>
@@ -100,15 +101,26 @@
                     <h5>
                     <a href="chitietbaipost/{{$post->id}}"><b>#{{ $post->id }}:</b> {{ $post->title }}</a>
                     </h5>
+=======
+                @foreach($posthome as $post)
+                  
+                    <hr>
+                    <h4>Vmo Confession</h4>
+                    <p><b>#{{ $post->id }}:</b> {{ $post->title }}</p>
+>>>>>>> 6766921... like dislike display
                     <p>{{ $post->content }}</p>
                     <!-- con -->
                     <!-- <hr>
                 <p>2 like</p>
                 <hr> -->
+<<<<<<< HEAD
                     @include('layout.like')
 
 
 
+=======
+                    @include('layout.like');
+>>>>>>> 6766921... like dislike display
                 @endforeach
 
             </div>

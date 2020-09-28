@@ -63,6 +63,7 @@ $(document).ready(function(){
       var idPost = $(this).val();
       $.get('dadislike/'+idPost,function(data){
           $("#dislike"+idPost).html(data);
+<<<<<<< HEAD
       });
     });
 
@@ -121,6 +122,8 @@ $(document).ready(function(){
       //alert(idComment);
       $.get('dalikecommentrep/'+idComment,function(data){
         $("#like"+idComment).html(data);
+=======
+>>>>>>> 6766921... like dislike display
       });
     });
 

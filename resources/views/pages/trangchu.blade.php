@@ -95,7 +95,9 @@
                 @foreach($post as $pt)
                     <hr>
                     <h4>Vmo Confession</h4>
-                    <p><b>#{{ $pt->id }}:</b> {{ $pt->title }}</p>
+                    <h5>
+                    <a href="chitietbaipost/{{$pt->id}}"><b>#{{ $pt->id }}:</b> {{ $pt->title }}</a>
+                    </h5>
                     <p>{{ $pt->content }}</p>
                     <!-- con -->
                     <!-- <hr>

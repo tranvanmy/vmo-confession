@@ -45,7 +45,7 @@ if (!function_exists('likePost')) {
     }
 }
     if (!function_exists('rating')) {
-        function rating($id)
+        function vote($id)
         {
             $post = Post::find($id);
                 
@@ -62,5 +62,16 @@ if (!function_exists('likePost')) {
         
         }
   }
+  if (!function_exists('checkVote')) {
+    function checkVote($id)
+    {
+        $post = Post::find($id);
+            
+        if(count($post->votes()->where('id_user',Auth::user()->id)->get())==0){
+            return false;
+        }else return true;
+        
+    }
+}
 
 ?>

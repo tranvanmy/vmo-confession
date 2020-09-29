@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
@@ -80,13 +82,13 @@ class PagesController extends Controller
         $user->name = $request->name;
      
         $user->password = bcrypt($request->password);
-        $user->save();
+        //$user->save();
         return redirect('nguoidung')->with('thongbao','sửa thành công');
 
     }
     public function getHomePage()
     {
-        $post = Post::where('published','1')->get();
+        $post = Post::where('published','1')->orderBy('published_at','DESC')->get();
 		// $post = Post::all();
         
         return view('pages.trangchu',['post'=>$post]);
@@ -94,9 +96,42 @@ class PagesController extends Controller
     public function getSearch(Request $request)
     {
         $keyword = $request->keyword;
-        $post = Post::where('title','like',"%$keyword%")->orwhere('content','like',"%$keyword%")->take(30)->paginate(10);
+        $id_category = $request->category;
+
+        if($request->category == 0){
+
+            // $post = Post::where('published',1)->where('title','like',"%$keyword%")
+            // ->orwhere('content','like',"%$keyword%")->orderBy('published','DESC')->take(30)->paginate(10);
+            $post = Post::where(function($query) use ($keyword){
+                $query->where('published',1)
+                    ->where('title','like',"%$keyword%");
+            })->orwhere(function($query) use ($keyword) {
+                $query->where('published',1)
+                    ->where('title','like',"%$keyword%");
+            })->orderBy('published_at','DESC')->take(30)->paginate(10);
+        }else{
+            // $post = Category::find($request->category)->post()->where('title','like',"%$keyword%")
+            // // ->orwhere('content','like',"%$keyword%")
+            // ->get();
+            $post = Post::where(function($query) use ($keyword,$id_category){
+                    $query->where('title','like',"%$keyword%")
+                    ->where('published',1)
+                    ->whereHas('category',function($query) use ($id_category){
+                        $query->where('id',$id_category);
+                    });
+                })->orwhere(function($query) use ($keyword,$id_category){
+                $query->where('content','like',"%$keyword%")
+                ->where('published',1)
+                ->whereHas('category',function($query) use ($id_category){
+                    $query->where('id',$id_category);
+                });
+            })->orderBy('published_at','DESC')->take(30)->paginate(10);
+           
+            
+        }
    
         return view('pages.search',['keyword'=>$keyword,'post'=>$post]);
+        // return view('pages.demo');
 	}
 	public function Post(Request $request)
 	{
@@ -125,6 +160,7 @@ class PagesController extends Controller
 
 		$post->save();
 		return redirect('homepage')->with('thongbao','Đăng bài thành công,Bạn hãy chờ duyệt');
+
 	}
 
  public function getDangnhapAdmin(){
@@ -161,4 +197,25 @@ class PagesController extends Controller
         }
 
  }
+
+    }
+    public function getPostbyCategory($id_category)
+    { 
+        // $post = Category::find($id_category)->post->where('published',1)
+        // ->orderBy('published_at','DESC')->get()->paginate(10);
+        $post = Post::where(function($query)use ($id_category) {
+            $query->where('published',1)
+            ->whereHas('category',function($query) use ($id_category) {
+                $query->where('id',$id_category);
+            });
+        })->take(100)->paginate(10);
+        $categoryPost = Category::find($id_category);
+        return view('pages.PostByCategory',['post'=>$post, 'categoryPost'=>$categoryPost]);
+    }
+    public function postRating(Request $request)
+    {
+        $rate = $request->rate;
+        return view('pages.demo',['rate'=>$rate]);
+    }
+
 }

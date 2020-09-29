@@ -11,9 +11,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
+    public function likes(){
+        return $this->hasMany('App\Models\Like','id_user','id');
     }
 
     /**

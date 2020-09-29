@@ -12,7 +12,7 @@ class Comment extends Model
     protected $table = 'comments';
     public function likes(){
         
-        return $this->morphMany('App\Models\Like','liketable');
+        return $this->morphMany('App\Models\Like','likeable');
     }
     public function post(){
         return $this->belongsTo('App\Models\Post','id_post','id');

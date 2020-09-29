@@ -68,5 +68,8 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('danhsachdaduyet',[PostController::class,'getDanhSachDaDuyet']);
         Route::get('xoa/{danhsachdaduyet}/{id}',[PostController::class,'getXoa']);
         Route::get('publish/{id}',[PostController::class,'getPublish']);
+
+        Route::get('them',[PostController::class,'getThem']);
+        Route::post('them',[PostController::class,'postThem']);
     });
 });

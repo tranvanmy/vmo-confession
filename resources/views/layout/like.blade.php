@@ -44,11 +44,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
             
-<<<<<<< HEAD
                 {{number_format(rating($post->id) ,2)}} Rate
-=======
-                {{number_format(rating($post->id) ,2)}}/5 Rate    
->>>>>>> 6766921... like dislike display
             </button>
 
             <!-- Modal -->

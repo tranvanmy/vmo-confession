@@ -83,10 +83,10 @@ class PagesController extends Controller
     }
     public function getHomePage()
     {
-        $posthome = Post::where('published','1')->orderBy('published_at','DESC')->get();
+        $post = Post::where('published','1')->orderBy('published_at','DESC')->get();
 		// $post = Post::all();
         
-        return view('pages.trangchu',['posthome'=>$posthome]);
+        return view('pages.trangchu',['post'=>$post]);
     }
     public function getSearch(Request $request)
     {

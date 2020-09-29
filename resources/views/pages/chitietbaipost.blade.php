@@ -172,10 +172,12 @@
                         
                    </div>
                    @endforeach
-                   <label>nhập bình luận...</label>
+                    <label>nhập bình luận...</label>
                        <form role="form" action="repcomment/{{$cm->id}}/{{$post->id}}" method="post" >
                            <input type="hidden" name="_token" value="{{csrf_token()}}" />
-                           <input type="text" class="form-control" name="repcomment">
+                           <div class="form-group">
+                                <input type="text" class="form-control" name="repcomment">
+                            </div>
                            <button type="submit" >bình luận</button>
                        </form>
                    </div>

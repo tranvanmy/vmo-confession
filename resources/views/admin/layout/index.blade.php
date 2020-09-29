@@ -72,6 +72,7 @@
     
     @yield('script')
 
+    <script src="js/post_admin.js"></script>
 </body>
 
 </html>

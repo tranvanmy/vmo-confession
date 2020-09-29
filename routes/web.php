@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ThongKeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +72,9 @@ Route::group(['prefix'=>'admin'],function(){
 
         Route::get('them',[PostController::class,'getThem']);
         Route::post('them',[PostController::class,'postThem']);
+    });
+    Route::group(['prefix'=>'thongke'],function(){
+        Route::get('baipost',[ThongKeController::class,'getThongKeBaiPost']);
+        Route::post('baiposttrave',[ThongKeController::class,'getBaiPostTrave']);
     });
 });

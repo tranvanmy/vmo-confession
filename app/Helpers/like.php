@@ -62,5 +62,22 @@ if (!function_exists('likePost')) {
         
         }
   }
+    if (!function_exists('countPost')) {
+        function countPost($from,$to,$ct)
+        {
+            //$count = count(Post::where('published_at','>=',$from)->where('published_at','<',$to)->where('id_category','=',$ct->id)->get());
+            $count = count($ct->posts()->whereBetween('published_at', [$from, $to])->get());
+            return $count;
+        }
+    }
+
+    if (!function_exists('countPostTong')) {
+        function countPostTong($from,$to,$ct)
+        {
+            //$count = count(Post::where('published_at','>=',$from)->where('published_at','<',$to)->where('id_category','=',$ct->id)->get());
+            $count = count(Post::whereBetween('published_at', [$from, $to])->get());
+            return $count;
+        }
+    }
 
 ?>

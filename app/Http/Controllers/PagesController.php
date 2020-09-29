@@ -15,12 +15,17 @@ class PagesController extends Controller
     function postDangnhap(Request $request){
       	$this->validate($request,
     	[
-    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+            'email'=>'required|min:3|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+           // (^[a-z][a-z0-9_\.]@vmo.vn$)',
+    		// 'email'=>'required|max:255',
     		'password'=>'required|min:3|max:18'
     	]
     	,[
     		'email.required'=>'Bạn chưa nhập Email',
-    		'email.regex'=>'Email không đúng định dạng công ty',
+            'email.min'=>'Email không được ít hơn 3 kí tự',
+    	
+            'email.max'=>'Email không được quá 255 từ',
+            'email.regex'=>'Email không đúng định dạng công ty',
     		'password.required'=>'Bạn chưa nhập Password',
     		'password.min'=>'Password không được ít hơn 3 ký tự',
     		'password.max'=>'Password không được nhiều hơn 18 ký tự'
@@ -121,4 +126,39 @@ class PagesController extends Controller
 		$post->save();
 		return redirect('homepage')->with('thongbao','Đăng bài thành công,Bạn hãy chờ duyệt');
 	}
+
+ public function getDangnhapAdmin(){
+    return view('pages.dangnhapadmin');
+ }
+ public function postDangnhapAdmin(){
+    $this->validate($request,
+        [
+            'email'=>'required|min:3|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+           // (^[a-z][a-z0-9_\.]@vmo.vn$)',
+            // 'email'=>'required|max:255',
+            'password'=>'required|min:3|max:18'
+        ]
+        ,[
+            'email.required'=>'Bạn chưa nhập Email',
+            'email.min'=>'Email không được ít hơn 3 kí tự',
+        
+            'email.max'=>'Email không được quá 255 từ',
+            'email.regex'=>'Email không đúng định dạng công ty',
+            'password.required'=>'Bạn chưa nhập Password',
+            'password.min'=>'Password không được ít hơn 3 ký tự',
+            'password.max'=>'Password không được nhiều hơn 18 ký tự'
+
+        ]);
+
+   
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+        {
+            return redirect('admin');
+        }
+        else{
+            return redirect('pages.dangnhapadmin')->with('thongbao','Đăng nhập thất bại');
+            
+        }
+
+ }
 }

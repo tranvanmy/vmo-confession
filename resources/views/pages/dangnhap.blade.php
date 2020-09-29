@@ -46,6 +46,7 @@
                
                         @endif
                         <form role="form" action="dangnhap" method="POST">
+                            @csrf
                             <fieldset>  
                                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="form-group">
@@ -54,7 +55,16 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
+                                <div class="form-group">
+                                    <label class="label-agree-term"><span><span></span></span>
+                                    <a href="{{route('get.reset.password') }}" target="_blank">Forgot password</a>
+                                    </label>
+                                    
+                                </div>
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                                <a href="{{route('login.google')}}" class="btn btn-block btn-danger">
+                                    <i class="fab fa-google-plus mr-2"></i>Sign in using Google+
+                                </a>
                             </fieldset>
                         </form>
                     </div>

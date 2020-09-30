@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Vote;
 
 class PagesController extends Controller
     
@@ -212,10 +213,14 @@ class PagesController extends Controller
         $categoryPost = Category::find($id_category);
         return view('pages.PostByCategory',['post'=>$post, 'categoryPost'=>$categoryPost]);
     }
+
     public function postRating(Request $request)
     {
         $rate = $request->rate;
         return view('pages.demo',['rate'=>$rate]);
     }
+
+
+    
 
 }

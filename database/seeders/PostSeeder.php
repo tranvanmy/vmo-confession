@@ -28,7 +28,6 @@ class PostSeeder extends Seeder
             ],
 
             ['id_category'=>2, 
-<<<<<<< HEAD
 
             'title'=>' 27 tuổi, lương hơn 30tr nhưng lại chẳng tiết kiệm được đồng nào…có nên tiếp tục.',
             'Content'=>'Chào mọi người, anh người yêu mình năm nay 27 tuổi, đi làm được 5 năm và lương hiện tại quanh mức 30tr, mình thì đang năm 3, bản thân lúc đâu nghe anh nói chuyện, tiếp xúc thấy anh cũng giỏi, vui tính, hoà đồng, mau mồm mau miệng, công việc cũng ổn, ở thuê thôi nhưng em cảm giác anh ấy là người có chí, sớm muộn gì chẳng có nhà, có xe…cứ có chí là đc, ngoại hình cũng ok nên đồng ý yêu, mà yêu được gần 8 tháng thì em phát hiện ra anh ấy ko để tiết kiệm được đồng nào mặc dù lương so với các bạn đồng trang lứa cũng cao, có những lúc phải vay em 1 – 2 triệu nhưng khi có lương là trả ngay, em mới thắc mắc hỏi anh ấy tại sao ko tiết kiệm đc đồng nào:
@@ -42,14 +41,13 @@ class PostSeeder extends Seeder
             “Anh thi thoảng mà 1 tháng 10 triệu tiền lô đề, ko trúng con nào à”
             “Trúng nhưng ít. Mà đầy người còn đánh to hơn kia kìa sao em ko nói”
             Nói đến đây là chịu rồi. Em đắn đo có nên tiếp tục chuyện tình cảm này ko? Người ta bảo cờ bạc là bác thằng bần, đánh đề ra đê mà ở, như này thì bao nhiêu cho đủ. Hỏi sao ko tiết kiệm đc cái đồng mẹ nào?',
-            'published'=>0,
+            'published'=>1,
             'published_at'=>new DateTime(),
             ],
 
 
             ['id_category'=>2, 
 
-=======
             'title'=>'Chia tiền với người yêu',
             'Content'=>'Ko biết chị em nào như mình ko? Mình là con gái nhưng kiểu người sòng phẳng, thực ra nếu có ai bao ăn bao tất thì cũng sướng thật và sướng thận đấy, nhưng mà cứ chia nhau cho nó sướng cả tâm nữa. Thoải mái, ăn xong đỡ phải nghĩ ngợi là họ bao mình sau mình phải bao ko, phải khao lại ko……v…v…
             Vì thế nên lúc yêu đương mình cũng không để người yêu thiệt thòi bao giờ. Đi chơi thì ông trả tiền ăn mình trả tiền nước. Người ta mua vé xem phim thì mình mua bỏng ngô. Cứ thế cho nó nhàn tâm. Hơn nữa để người yêu trả hết thì mình cũng thấy tội, ai cũng kiếm tiền vất vả mà nhỉ chứ có phải từ trên trời rơi xuống đâu.
@@ -61,7 +59,6 @@ class PostSeeder extends Seeder
             'published_at'=>new DateTime(),
             ],
             ['id_category'=>2, 
->>>>>>> f79d77a... toan update
             'title'=>'NGÀY TÀN CỦA COVID-19 SẮP ĐẾN???',
             'Content'=>'Các nhà khoa học của Trường Đại học Y Pittsburgh (Mỹ) đã phân lập được phân tử sinh học nhỏ nhất cho đến nay có thể vô hiệu hóa hoàn toàn và rõ rệt virus SARS-CoV-2 gây bệnh COVID-19
             Loại kháng thể "nhỏ mà có võ" được các nhà khoa học Mỹ phát hiện làm dấy lên hi vọng trong bối cảnh chưa có vắc xin hiệu quả và an toàn tiêm chủng đại trà
@@ -145,13 +142,8 @@ class PostSeeder extends Seeder
             Thời gian yêu và tìm hiểu quá ngắn nên ngày về làm dâu em mới "vỡ" ra nhiều thứ.',
             'published'=>1,
             'published_at'=>new DateTime(),
-<<<<<<< HEAD
-            ],]
-        );
-=======
             ]
         ]);
->>>>>>> f79d77a... toan update
         
     }
 }

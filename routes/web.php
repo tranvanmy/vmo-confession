@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 use App\Http\Controllers\PostController;
+use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 
 /*
@@ -50,7 +51,7 @@ Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('logi
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
 Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']); 
-Route::post('rating', [PagesController::class,'postRating']);
+Route::post('vote/{idpost}', [AjaxLikeController::class,'postVote']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 

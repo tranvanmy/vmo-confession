@@ -33,6 +33,9 @@ Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
 Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']); 
 Route::post('vote/{idpost}', [AjaxLikeController::class,'postVote']);
+Route::get('toplike', [PagesController::class,'getTopLike']);
+Route::get('topcomment', [PagesController::class,'getTopComment']);
+
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 

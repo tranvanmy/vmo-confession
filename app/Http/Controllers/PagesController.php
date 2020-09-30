@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Vote;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
     
@@ -84,10 +86,10 @@ class PagesController extends Controller
     }
     public function getHomePage()
     {
-        $post = Post::where('published','1')->orderBy('published_at','DESC')->get();
+        $post = Post::where('published','1')->orderBy('published_at','DESC')->paginate(5);
 		// $post = Post::all();
         
-        return view('pages.trangchu',['post'=>$post]);
+        return view('pages.trangchu',['posthome'=>$post]);
     }
     public function getSearch(Request $request)
     {
@@ -170,5 +172,23 @@ class PagesController extends Controller
         $categoryPost = Category::find($id_category);
         return view('pages.PostByCategory',['post'=>$post, 'categoryPost'=>$categoryPost]);
     }
-    
+    // Top like
+
+    public function getTopLike()
+    {
+        $post = Post::withCount(['likes'=>function($query){
+            $query->where('likeable_type','App\Models\Post')
+            ->where('value',1);
+        }])->orderBy('likes_count','DESC')->paginate(6);
+        
+        return view('pages.topLike',['posthome'=>$post]);
+		
+    }
+    public function getTopComment()
+    {
+        $post = Post::withCount('comments')->orderBy('comments_count','DESC')->paginate(6);
+        
+        return view('pages.topComment',['posthome'=>$post]);
+		
+    }
 }

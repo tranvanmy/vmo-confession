@@ -94,29 +94,19 @@
                     </div>
                 @endif
 
-                @foreach($post as $pt)
+                @foreach($post as $post)
                     <hr>
                     <h4>Vmo Confession</h4>
-                    <p><b>#{{ $pt->id }}:</b> {{ $pt->title }}</p>
-                    <p>{{ $pt->content }}</p>
+                    <a href="chitietbaipost/{{$post->id}}"><b>#{{ $post->id }}:</b> {{ $post->title }}</a>
+                    <p>{{ $post->content }}</p>
                     <!-- con -->
                     <!-- <hr>
                 <p>2 like</p>
                 <hr> -->
                     
                     
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Like</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Dislike</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Comment</span>
-
-                    </button>
+                @include('layout.like')
+                <hr>
                 @endforeach
 
             </div>

@@ -5,17 +5,17 @@
         <th id="like{{ $post->id }}">
 
             @if(likePost($post->id) == true )
-
+            <?php echo countLike($post->id)?>
             <button id="btnLike" name="btnLike" value="{{ $post->id }}" class="bg-dark text-white btn-like">
                 {{-- <p id="like" name="like"> --}}
-                <?php echo countLike($post->id)?> Like
+                 Like
             </button>
 
             @else
-
+            <?php echo countLike($post->id) ?> 
             <button id="btnDaLike" name="btnDaLike" value="{{ $post->id }}" class="btn btn-primary btn-dalike">
                 {{-- <p id="like" name="like"> --}}
-                <?php echo countLike($post->id) ?> Đã Like
+                Đã Like
             </button>
 
             @endif
@@ -24,22 +24,29 @@
         <th id="dislike{{ $post->id }}">
 
             @if(disLikePost($post->id) == true)
-
+            <?php echo countDisLike($post->id) ?>
             <button id="btndisLike" name="btndisLike" value="{{ $post->id }}" class="bg-dark text-white btn-dislike">
                 {{-- <p id="like" name="like"> --}}
-                <?php echo countDisLike($post->id) ?> disLike
+                 disLike
             </button>
 
             @else
-
+            <?php echo countDisLike($post->id) ?>
             <button id="btnDadisLike" name="btnDadisLike" value="{{ $post->id }}" class="btn btn-primary btn-dadislike">
                 {{-- <p id="like" name="like"> --}}
-                <?php echo countDisLike($post->id) ?> Đã disLike
+                 Đã disLike
             </button>
 
             @endif
 
         </th>
+        
+        <th>
+            <a href="chitietbaipost/{{$post->id}}"><button type="button" class="btn btn-primary">
+                Comment (<?php echo countComment($post->id) ?>)</button>
+            </a>
+        </th>
+        <!-- //  VOTE  -->
         <th>
             @if(checkVote($post->id) == true)
                 <!-- Button trigger modal -->

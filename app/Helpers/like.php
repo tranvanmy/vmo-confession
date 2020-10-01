@@ -90,6 +90,13 @@ if (!function_exists('likePost')) {
         }else return true;
         
     }
+    if (!function_exists('countComment')) {
+        function countComment($id)
+        {
+            $post = Post::find($id);
+            return count($post->comments()->get());
+        }
+    }
 }
 
 

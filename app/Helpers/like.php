@@ -45,7 +45,7 @@ if (!function_exists('likePost')) {
     }
 }
     if (!function_exists('rating')) {
-        function rating($id)
+        function vote($id)
         {
             $post = Post::find($id);
                 
@@ -62,6 +62,7 @@ if (!function_exists('likePost')) {
         
         }
   }
+
     if (!function_exists('countPost')) {
         function countPost($from,$to,$ct)
         {
@@ -79,5 +80,24 @@ if (!function_exists('likePost')) {
             return $count;
         }
     }
+  if (!function_exists('checkVote')) {
+    function checkVote($id)
+    {
+        $post = Post::find($id);
+            
+        if(count($post->votes()->where('id_user',Auth::user()->id)->get())==0){
+            return false;
+        }else return true;
+        
+    }
+    if (!function_exists('countComment')) {
+        function countComment($id)
+        {
+            $post = Post::find($id);
+            return count($post->comments()->get());
+        }
+    }
+}
+
 
 ?>

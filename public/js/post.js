@@ -142,8 +142,155 @@ $(document).ready(function(){
       });
      });
 
+  $(document).on('click', '.btn-dadislike', function () {
+    var idPost = $(this).val();
+    $.get('dadislike/' + idPost, function (data) {
+      $("#dislike" + idPost).html(data);
+    });
   });
-  
+
+  //like comment
+  $(document).on('click', '.btn-likecm', function () {
+    var idComment = $(this).val();
+    //alert(idComment);
+    $.get('likecomment/' + idComment, function (data) {
+      $("#like" + idComment).html(data);
+    });
+    $.get('dadislikecomment/' + idComment, function (data) {
+      $("#dislike" + idComment).html(data);
+    });
+  });
+
+  $(document).on('click', '.btn-dalikecm', function () {
+    var idComment = $(this).val();
+    //alert(idComment);
+    $.get('dalikecomment/' + idComment, function (data) {
+      $("#like" + idComment).html(data);
+    });
+  });
+
+  //dislike comment
+  $(document).on('click', '.btn-dislikecm', function () {
+    var idComment = $(this).val();
+    $.get('dislikecomment/' + idComment, function (data) {
+      $("#dislike" + idComment).html(data);
+    });
+    $.get('dalikecomment/' + idComment, function (data) {
+      $("#like" + idComment).html(data);
+    });
+  });
+
+  $(document).on('click', '.btn-dadislikecm', function () {
+    var idComment = $(this).val();
+    $.get('dadislikecomment/' + idComment, function (data) {
+      $("#dislike" + idComment).html(data);
+    });
+  });
+
+  //like rep comment
+  $(document).on('click', '.btn-likecm-rep', function () {
+    var idComment = $(this).val();
+    //alert(idComment);
+    $.get('likecommentrep/' + idComment, function (data) {
+      $("#like" + idComment).html(data);
+    });
+    $.get('dadislikecomment/' + idComment, function (data) {
+      $("#dislike" + idComment).html(data);
+    });
+  });
+
+  $(document).on('click', '.btn-dalikecm-rep', function () {
+    var idComment = $(this).val();
+    //alert(idComment);
+    $.get('dalikecommentrep/' + idComment, function (data) {
+      $("#like" + idComment).html(data);
+    });
+  });
+
+  //dislike rep comment
+  $(document).on('click', '.btn-dislikecm-rep', function () {
+    var idComment = $(this).val();
+    $.get('dislikecommentrep/' + idComment, function (data) {
+      $("#dislike" + idComment).html(data);
+    });
+    $.get('dalikecomment/' + idComment, function (data) {
+      $("#like" + idComment).html(data);
+    });
+  });
+
+  $(document).on('click', '.btn-dadislikecm-rep', function () {
+    var idComment = $(this).val();
+    $.get('dadislikecommentrep/' + idComment, function (data) {
+      $("#dislike" + idComment).html(data);
+    });
+  });
+
+  //vote
+
+  //  $(document).on('click','.btn-vote',function(){
+  //    var idvote = $(this).val();
+  //    $.post('vote/'+idvote, function(data){
+  //      $("#vt"+idvote).html(data);
+  //    })
+  //  })
+
+  //  $('#formVote').submit(function(e){
+  //    e.preventDefault();
+  //    var idVote = $('.btn-vote').val();
+  //    console.log(idVote)
+
+  //   //  $.ajax({
+  //   //     type:'POST',
+  //   //     cache:false,
+  //   //     url:'homepage',
+  //   //     data:{
+  //   //       _token:'{{csrf_token()}}',
+  //   //       point = $('#point'+idVote).val(),
+
+  //   //     },
+  //   //     success:function(data){
+  //   //       $('$vt'+idVote).html(data),
+  //   //       console.log('Submission was successful.')
+  //   //     },
+  //   //     error: function (data) {
+  //   //       console.log('An error occurred.');
+  //   //       console.log(data);
+  //   //       },
+  //   //  });
+  //  })
+
+
+  $('.btn-vote').click(function (e) {
+    e.preventDefault();
+    var idpos = $(this).val()
+    var pointVote = $('#point'+ idpos).val()
+    // console.log(point)
+    // console.log('---'+idpos)
+    $.ajax({
+      type: 'POST',
+      url: 'vote/'+idpos,
+      data:
+      // {
+      //     _token:"{{ csrf_token() }}",
+      //     point:pointVote,
+      //     idpost:idpos
+      // },
+      $('#myForm'+idpos).serialize(),
+      success: function (data) {
+        $('#vt'+idpos).html(data),
+        $('#exampleModal'+idpos).modal('hide');
+        $('#btn-'+idpos).removeAttr('style');
+          console.log('Submission was successful.')
+      },
+      error: function (data) {
+        console.log('An error occurred.');
+
+      },
+    });
+  })
+
+});
+
   // $(document).ready(function(){
   //     $("#btnLike").click(function(){
   //       var idPost = $(this).val();
@@ -153,7 +300,7 @@ $(document).ready(function(){
   //       });
   //     });
   // //});
-  
+
   // //$(document).ready(function(){
   //   $("#btnDaLike").click(function(){
   //     var idPost = $(this).val();
@@ -163,5 +310,5 @@ $(document).ready(function(){
   //     });
   //   });
   // });
-  
-  
+
+

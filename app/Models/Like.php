@@ -9,7 +9,7 @@ class Like extends Model
 {
     use HasFactory;
     protected $table = 'likes';
-    protected $fillable = ['id','value','body'];
+    protected $fillable = ['id','value','id_post'];
 
     public function commentable(){
         return $this->morphTo();

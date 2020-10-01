@@ -28,23 +28,12 @@
                 @if(count($post) == 0)
                     <h4> Không có kết quả</h4> 
                 @else 
-                    @foreach($post as $pt)
+                    @foreach($post as $post)
                     <h4>Vmo Confession</h4>
-                    <p><b>#{{ $pt->id }}: {!! changecolor($pt->title,$keyword) !!}</b></p>
-                    <p>{!! changecolor($pt->content,$keyword) !!}</p>
+                    <p><b>#{{ $post->id }}: {!! changecolor($post->title,$keyword) !!}</b></p>
+                    <p>{!! changecolor($post->content,$keyword) !!}</p>
                     <!-- con -->
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Like</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Dislike</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
-                    <button type="button" class="btn btn-primary" id="like">
-                        <span class="badge badge-light">Comment</span>
-                        <span class="sr-only">unread messages</span>
-                    </button>
+                    @include('layout.like')
                     <hr>
                 @endforeach
                 @endif

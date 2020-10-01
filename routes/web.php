@@ -77,4 +77,8 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('baipost',[ThongKeController::class,'getThongKeBaiPost']);
         Route::post('baiposttrave',[ThongKeController::class,'getBaiPostTrave']);
     });
+    Route::group(['prefix'=>'category'],function(){
+        Route::get('danhsach',[ThongKeController::class,'getDanhSach']);
+        //Route::post('baiposttrave',[ThongKeController::class,'getBaiPostTrave']);
+    });
 });

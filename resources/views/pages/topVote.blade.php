@@ -18,11 +18,11 @@
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color:#337AB7; color:white;">
-                    <h2 style="margin-top:0px; margin-bottom:0px;">Top Comment</h2>
+                    <h2 style="margin-top:0px; margin-bottom:0px;">Top Đánh Giá</h2>
                     <div class="container">
                      
                     </div>
-
+                 
                 </div>
 
                 @if(session('thongbao'))
@@ -32,8 +32,8 @@
                 @endif
 
                 @include('layout.showpost')
-
-        
+                       
+                
             </div>
             {!! $posthome->links('vendor.pagination.bootstrap-4') !!}
         </div>

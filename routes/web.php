@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ThongKeController;
+use Spatie\Permission\Contracts\Role;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 /*
@@ -37,6 +38,7 @@ Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']);
 Route::post('vote/{idpost}', [AjaxLikeController::class,'postVote']);
 Route::get('toplike', [PagesController::class,'getTopLike']);
 Route::get('topcomment', [PagesController::class,'getTopComment']);
+Route::get('topvote', [PagesController::class,'getTopVote']);
 
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
@@ -68,7 +70,7 @@ Route::get('dalikecommentrep/{id}',[AjaxLikeController::class,'getDaLikeCommentR
 Route::get('dislikecommentrep/{id}',[AjaxLikeController::class,'getdisLikeCommentRep']);
 Route::get('dadislikecommentrep/{id}',[AjaxLikeController::class,'getDadisLikeCommentRep']);
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::group(['prefix'=>'post'],function(){
         Route::get('danhsachchuaduyet',[PostController::class,'getDanhSachChuaDuyet']);
         Route::get('danhsachdaduyet',[PostController::class,'getDanhSachDaDuyet']);
@@ -99,3 +101,6 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('them',[UserController::class,'postThem']);
     });
 });
+Route::get('admin/login',[UserController::class,'getLogin']);
+Route::post('admin/login',[UserController::class,'postLogin']);
+

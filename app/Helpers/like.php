@@ -97,6 +97,13 @@ if (!function_exists('likePost')) {
             return count($post->comments()->get());
         }
     }
+    if (!function_exists('countVote')) {
+        function countVote($id)
+        {
+            $post = Post::find($id);
+            return count($post->votes()->get());
+        }
+    }
 }
 
 

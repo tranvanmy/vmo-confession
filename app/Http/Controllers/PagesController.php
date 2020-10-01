@@ -184,11 +184,21 @@ class PagesController extends Controller
         return view('pages.topLike',['posthome'=>$post]);
 		
     }
+
+    //Top comment
     public function getTopComment()
     {
         $post = Post::withCount('comments')->orderBy('comments_count','DESC')->paginate(6);
         
         return view('pages.topComment',['posthome'=>$post]);
+		
+    }
+    //Top Vote
+    public function getTopVote()
+    {
+        $post = Post::withCount('votes')->orderBy('votes_count','DESC')->paginate(6);
+
+        return view('pages.topVote',['posthome'=>$post]);
 		
     }
 }

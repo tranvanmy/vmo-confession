@@ -10,12 +10,16 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function getDanhSachChuaDuyet(){
-        $posts = Post::where('published','=',0)->get();
+        $posts = Post::where('published','=',0)->orderBy('created_at','DESC')->get();
+        // $post = Post::withCount(['likes'=>function($query){
+        //     $query->where('likeable_type','App\Models\Post')
+        //     ->where('value',1);
+        //}])->orderBy('likes_count','DESC')->paginate(6);
         return view('admin.post.danhsachchuaduyet',['posts'=>$posts]);
     }
 
     public function getDanhSachDaDuyet(){
-        $posts = Post::where('published','=',1)->get();
+        $posts = Post::where('published','=',1)->orderBy('published_at','DESC')->get();
         return View('admin.post.danhsachdaduyet',['posts'=>$posts]);
     }
 

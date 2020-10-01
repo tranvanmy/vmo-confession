@@ -39,7 +39,7 @@
                         <tr class="even gradeC" align="center">
                             <td>{{$pt->category->title}}</td>
                             <td>{{$pt->title}}</td>
-                            <td>{{$pt->content}}}</td>
+                            <td>{!!$pt->content!!}</td>
                             <td>{{$pt->created_at}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/post/xoa/{{'danhsachchuaduyet'}}/{{$pt->id}}"> Delete</a></td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/post/publish/{{$pt->id}}">Publish</a></td>

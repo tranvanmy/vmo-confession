@@ -24,7 +24,7 @@
                        <th>Category</th>
                        <th>Title</th>
                        <th>Content</th>
-                       <th>Created_at</th>
+                       <th>Published_at</th>
                        <th>Delete</th>
                        {{-- <th>Published</th> --}}
                    </tr>
@@ -34,8 +34,8 @@
                         <tr class="even gradeC" align="center">
                             <td>{{$pt->category->title}}</td>
                             <td>{{$pt->title}}</td>
-                            <td>{{$pt->content}}}</td>
-                            <td>{{$pt->created_at}}</td>
+                            <td>{!!$pt->content!!}</td>
+                            <td>{{$pt->published_at}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/post/xoa/{{'danhsachdaduyet'}}/{{$pt->id}}"> Delete</a></td>
                             {{-- <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/post/published/{{}}">Published</a></td> --}}
                         </tr>

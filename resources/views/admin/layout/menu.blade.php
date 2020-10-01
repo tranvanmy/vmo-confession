@@ -41,25 +41,13 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i> Tin Tức<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-users fa-fw"></i>Chủ Đề<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/tintuc/danhsach">Danh Sách</a>
+                        <a href="admin/category/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="admin/tintuc/them">Thêm tin tức</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i> Slide<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="admin/slide/danhsach">Danh sách</a>
-                    </li>
-                    <li>
-                        <a href="admin/slide/them">Thêm </a>
+                        <a href="admin/category/them">Thêm chủ đề</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -72,6 +60,18 @@
                     </li>
                     <li>
                         <a href="admin/user/them">Thêm</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-users fa-fw"></i> Slide<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="admin/slide/danhsach">Danh sách</a>
+                    </li>
+                    <li>
+                        <a href="admin/slide/them">Thêm </a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

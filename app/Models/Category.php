@@ -9,8 +9,9 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = 'categories';
-    public function post(){
+    public function posts(){
         return $this->hasMany('App\Models\Post','id_category','id');
     }
+    
     
 }

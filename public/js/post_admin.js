@@ -7,4 +7,10 @@ $(document).ready(function(){
             $('#published_at').attr('disabled','');
         }
     });
+    // $(document).on('click', '.btn-thongkepost', function(){
+    //     $('#nam').change(function(){
+    //         alert($(this).val());
+    //     });
+    //       $.get('admin/thongke/baiposttrave/'+nam,function(){});
+    //   });
 });

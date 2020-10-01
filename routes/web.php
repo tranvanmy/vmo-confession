@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ThongKeController;
+use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('logi
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
 Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']); 
-Route::post('rating', [PagesController::class,'postRating']);
+Route::post('vote/{idpost}', [AjaxLikeController::class,'postVote']);
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
 

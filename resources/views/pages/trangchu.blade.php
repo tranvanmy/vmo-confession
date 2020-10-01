@@ -40,7 +40,7 @@
                                 </div>
                                 {{-- Start Popup --}}
                                 <form id="Mypost" name="Mypost" action="Post" method="POST">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token()}}">
                                     <div class="modal-body">
 
                                         <!-- Category -->
@@ -106,6 +106,7 @@
                 <p>2 like</p>
                 <hr> -->
                     @include('layout.like')
+                    
 
 
 

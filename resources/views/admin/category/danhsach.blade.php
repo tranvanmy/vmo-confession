@@ -21,28 +21,19 @@
                    <tr align="center">
                        <th>ID</th>
                        <th>Tên thể loại</th>
-                       <th>Tên loại tin</th>
-                       <th>Tên không giấu</th>
+                       <th>create_at</th>
                        <th>Delete</th>
                        <th>Edit</th>
                    </tr>
                </thead>
                <tbody>
-                   @foreach ($loaitin as $lt)
+                   @foreach ($categories as $ct)
                         <tr class="even gradeC" align="center">
-                            <td>{{$lt->id}}</td>
-
-                            {{-- @foreach ($theloai as $tl)
-                                @if ($tl->id == $lt->idTheLoai)
-                                    <td>{{$tl->Ten}}</td>
-                                    @break;
-                                @endif
-                             @endforeach --}}
-                            <td>{{$lt->theloai->Ten}}</td>
-                            <td>{{$lt->Ten}}</td>
-                            <td>{{$lt->TenKhongDau}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaitin/xoa/{{$lt->id}}"> Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaitin/sua/{{$lt->id}}">Edit</a></td>
+                            <td>{{$ct->id}}</td>
+                            <td>{{$ct->title}}</td>
+                            <td>{{$ct->created_at}}</td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/category/xoa/{{$ct->id}}"> Delete</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/category/sua/{{$ct->id}}">Edit</a></td>
                         </tr>
                    @endforeach
                </tbody>

@@ -83,7 +83,7 @@
                             </button>
                         </div>
                         
-                            <form action="vote/{{$post->id }}" method="post" id="myForm{{$post->id}}">
+                            <form action="vote/{{$post->id}}" method="post" id="myForm{{$post->id}}">
                                 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
                                 @csrf
                                 <div class="modal-body">

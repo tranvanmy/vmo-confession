@@ -150,81 +150,7 @@ $(document).ready(function(){
   });
 
   //like comment
-  $(document).on('click', '.btn-likecm', function () {
-    var idComment = $(this).val();
-    //alert(idComment);
-    $.get('likecomment/' + idComment, function (data) {
-      $("#like" + idComment).html(data);
-    });
-    $.get('dadislikecomment/' + idComment, function (data) {
-      $("#dislike" + idComment).html(data);
-    });
-  });
-
-  $(document).on('click', '.btn-dalikecm', function () {
-    var idComment = $(this).val();
-    //alert(idComment);
-    $.get('dalikecomment/' + idComment, function (data) {
-      $("#like" + idComment).html(data);
-    });
-  });
-
-  //dislike comment
-  $(document).on('click', '.btn-dislikecm', function () {
-    var idComment = $(this).val();
-    $.get('dislikecomment/' + idComment, function (data) {
-      $("#dislike" + idComment).html(data);
-    });
-    $.get('dalikecomment/' + idComment, function (data) {
-      $("#like" + idComment).html(data);
-    });
-  });
-
-  $(document).on('click', '.btn-dadislikecm', function () {
-    var idComment = $(this).val();
-    $.get('dadislikecomment/' + idComment, function (data) {
-      $("#dislike" + idComment).html(data);
-    });
-  });
-
-  //like rep comment
-  $(document).on('click', '.btn-likecm-rep', function () {
-    var idComment = $(this).val();
-    //alert(idComment);
-    $.get('likecommentrep/' + idComment, function (data) {
-      $("#like" + idComment).html(data);
-    });
-    $.get('dadislikecomment/' + idComment, function (data) {
-      $("#dislike" + idComment).html(data);
-    });
-  });
-
-  $(document).on('click', '.btn-dalikecm-rep', function () {
-    var idComment = $(this).val();
-    //alert(idComment);
-    $.get('dalikecommentrep/' + idComment, function (data) {
-      $("#like" + idComment).html(data);
-    });
-  });
-
-  //dislike rep comment
-  $(document).on('click', '.btn-dislikecm-rep', function () {
-    var idComment = $(this).val();
-    $.get('dislikecommentrep/' + idComment, function (data) {
-      $("#dislike" + idComment).html(data);
-    });
-    $.get('dalikecomment/' + idComment, function (data) {
-      $("#like" + idComment).html(data);
-    });
-  });
-
-  $(document).on('click', '.btn-dadislikecm-rep', function () {
-    var idComment = $(this).val();
-    $.get('dadislikecommentrep/' + idComment, function (data) {
-      $("#dislike" + idComment).html(data);
-    });
-  });
-
+  
   //vote
 
   //  $(document).on('click','.btn-vote',function(){
@@ -259,13 +185,13 @@ $(document).ready(function(){
   //   //  });
   //  })
 
-
+  //$(document).on('click', '.btn-vote', function () {
   $('.btn-vote').click(function (e) {
+    //console.log("toanto");
     e.preventDefault();
     var idpos = $(this).val()
     var pointVote = $('#point'+ idpos).val()
-    // console.log(point)
-    // console.log('---'+idpos)
+    //console.log(idpos)
     $.ajax({
       type: 'POST',
       url: 'vote/'+idpos,
@@ -287,7 +213,7 @@ $(document).ready(function(){
 
       },
     });
-  })
+  });
 
 });
 

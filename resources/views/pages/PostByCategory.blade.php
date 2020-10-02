@@ -98,7 +98,7 @@
                     <hr>
                     <h4>Vmo Confession</h4>
                     <a href="chitietbaipost/{{$post->id}}"><b>#{{ $post->id }}:</b> {{ $post->title }}</a>
-                    <p>{{ $post->content }}</p>
+                    <p>{!! $post->content !!}</p>
                     <!-- con -->
                     <!-- <hr>
                 <p>2 like</p>

@@ -24,36 +24,22 @@
                <thead>
                    <tr align="center">
                        <th>ID</th>
-                       <th>Tiêu Đề</th>
-                       <th>Tóm tắt</th>
-                       <th>Thể loại</th>
-                       <th>Loại tin</th>
-                       <th>xem</th>
-                       <th>Nổi bật</th>
+                       <th>Name</th>
+                       <th>Email</th>
+                       <th>Created_at</th>
                        <th>Delete</th>
                        <th>Edit</th>
                    </tr>
                </thead>
                <tbody>
-                   @foreach ($tintuc as $tt)
+                   @foreach ($users as $us)
                         <tr class="even gradeC" align="center">
-                            <td>{{$tt->id}}</td>
-                            <td>{{$tt->TieuDe}} <br>
-                                <img width="100px" src="upload/tintuc/{{$tt->Hinh}}" alt="">
-                            </td>
-                            <td>{{$tt->TomTat}}</td>
-                            <td>{{$tt->loaitin->theloai->Ten}}</td>
-                            <td>{{$tt->loaitin->Ten}}</td>
-                            <td>{{$tt->SoLuotXem}}</td>
-                        
-                            @if ($tt->NoiBat == 0)
-                                <td>không</td>
-                            @else
-                                <td>có</td>
-                            @endif
-                            
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/tintuc/xoa/{{$tt->id}}"> Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/tintuc/sua/{{$tt->id}}">Edit</a></td>    
+                            <td>{{$us->id}}</td>
+                            <td>{{$us->name}}</td>
+                            <td>{{$us->email}}</td>
+                            <td>{{$us->created_at}}</td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$us->id}}"> Delete</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$us->id}}">Edit</a></td>    
                         </tr>
                    @endforeach
                </tbody>

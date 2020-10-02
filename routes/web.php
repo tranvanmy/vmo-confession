@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjaxLikeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChiTietBaiPostController;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
@@ -80,5 +81,21 @@ Route::group(['prefix'=>'admin'],function(){
     Route::group(['prefix'=>'thongke'],function(){
         Route::get('baipost',[ThongKeController::class,'getThongKeBaiPost']);
         Route::post('baiposttrave',[ThongKeController::class,'getBaiPostTrave']);
+    });
+    Route::group(['prefix'=>'category'],function(){
+        Route::get('danhsach',[CategoryController::class,'getDanhSach']);
+        Route::get('xoa/{id}',[CategoryController::class,'getXoa']);
+        Route::get('sua/{id}',[CategoryController::class,'getSua']);
+        Route::post('sua/{id}',[CategoryController::class,'postSua']);
+        Route::get('them',[CategoryController::class,'getThem']);
+        Route::post('them',[CategoryController::class,'postThem']);
+    });
+    Route::group(['prefix'=>'user'],function(){
+        Route::get('danhsach',[UserController::class,'getDanhSach']);
+        Route::get('xoa/{id}',[UserController::class,'xoa']);
+        Route::get('sua/{id}',[UserController::class,'getSua']);
+        Route::post('sua/{id}',[UserController::class,'postSua']);
+        Route::get('them',[UserController::class,'getThem']);
+        Route::post('them',[UserController::class,'postThem']);
     });
 });

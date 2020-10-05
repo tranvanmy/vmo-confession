@@ -102,7 +102,7 @@ class UserController extends Controller
     {
         $this->validate($request,
     	[
-    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
+    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{2,32}@vmo.vn$)',
     		'password'=>'required|min:3|max:18'
     	]
     	,[

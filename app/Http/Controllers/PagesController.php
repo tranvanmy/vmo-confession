@@ -20,7 +20,7 @@ class PagesController extends Controller
     function postDangnhap(Request $request){
       	$this->validate($request,
     	[
-    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{2,32}@vmo.vn$)',
     		'password'=>'required|min:3|max:18'
     	]
     	,[
@@ -200,5 +200,17 @@ class PagesController extends Controller
 
         return view('pages.topVote',['posthome'=>$post]);
 		
+    }
+
+    //CONTACT
+    public function getContact()
+    {
+        return view('pages.contact');
+    }
+
+    // Introduct
+    public function getIntroduct()
+    {
+        return view('pages.introduce');
     }
 }

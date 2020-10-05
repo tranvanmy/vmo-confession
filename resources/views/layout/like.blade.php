@@ -55,7 +55,7 @@
                 </span>  
                 <button  type="button" class="btn btn-primary" data-toggle="modal" id="btn-{{$post->id}}"
                     data-target="#exampleModal{{ $post->id }}" >
-                 Đánh giá  
+                 Đánh giá  (<?php echo countVote($post->id) ?>)
                 </button>
             @else 
             
@@ -67,7 +67,7 @@
                     style="background-color:white;
 	                color:black"    
                     data-target="#exampleModal{{ $post->id }}" >
-                 Đánh giá  
+                 Đánh giá  (<?php echo countVote($post->id) ?>)
                 </button>
             @endif
                 
@@ -83,7 +83,7 @@
                             </button>
                         </div>
                         
-                            <form action="vote/{{$post->id}}" method="post" id="myForm{{$post->id}}">
+                            <form action="" method="post" id="myForm{{$post->id}}">
                                 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
                                 @csrf
                                 <div class="modal-body">

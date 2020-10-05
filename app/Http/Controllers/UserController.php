@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -92,5 +93,35 @@ class UserController extends Controller
         $user->save();
 
         return redirect('admin/user/them')->with('themthanhcong','thêm user thành công');
+        }
+    public function getLogin()
+    {
+        return view('admin.login');
+    }
+    public function postLogin(Request $request)
+    {
+        $this->validate($request,
+    	[
+    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
+    		'password'=>'required|min:3|max:18'
+    	]
+    	,[
+    		'email.required'=>'Bạn chưa nhập Email',
+    		'email.regex'=>'Email không đúng định dạng công ty',
+    		'password.required'=>'Bạn chưa nhập Password',
+    		'password.min'=>'Password không được ít hơn 3 ký tự',
+    		'password.max'=>'Password không được nhiều hơn 18 ký tự'
+
+    	]);
+
+   
+    	if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
+    	{
+    		return redirect('admin/post/danhsachchuaduyet');
+    	}
+    	else{
+    		return redirect('admin/login')->with('thongbao','Đăng nhập thất bại');
+    		
+    	}
     }
 }

@@ -6,8 +6,8 @@
    <div class="container-fluid">
        <div class="row">
            <div class="col-lg-12">
-               <h1 class="page-header">Posts chờ duyệt
-                   <small></small>
+               <h1 class="page-header">Bài đăng 
+                   <small>chưa duyệt</small>
                </h1>
            </div>
            <!-- /.col-lg-12 -->
@@ -25,24 +25,24 @@
             
            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                <thead>
-                   <tr align="center">
-                       <th>Category</th>
-                       <th>Title</th>
-                       <th>Content</th>
+                   <tr >
+                       <th>Thể loại</th>
+                       <th>Tiêu đề</th>
+                       <th>Nội dung</th>
                        <th>Created_at</th>
-                       <th>Delete</th>
-                       <th>Published</th>
+                       <th>Xóa</th>
+                       <th>Duyệt bài</th>
                    </tr>
                </thead>
                <tbody>
                    @foreach ($posts as $pt)
-                        <tr class="even gradeC" align="center">
+                        <tr class="even gradeC">
                             <td>{{$pt->category->title}}</td>
                             <td>{{$pt->title}}</td>
                             <td>{!!$pt->content!!}</td>
                             <td>{{$pt->created_at}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/post/xoa/{{'danhsachchuaduyet'}}/{{$pt->id}}"> Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/post/publish/{{$pt->id}}">Publish</a></td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/post/xoa/{{'danhsachchuaduyet'}}/{{$pt->id}}"> Xóa</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/post/publish/{{$pt->id}}">Duyệt</a></td>
                         </tr>
                    @endforeach
                </tbody>

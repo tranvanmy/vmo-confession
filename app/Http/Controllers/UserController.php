@@ -106,8 +106,8 @@ class UserController extends Controller
     		'password'=>'required|min:3|max:18'
     	]
     	,[
-    		'email.required'=>'Bạn chưa nhập Email',
-    		'email.regex'=>'Email không đúng định dạng công ty',
+    		'email.required'=>'Bạn chưa nhập email',
+    		'email.regex'=>'Sai email hoặc mật khẩu',
     		'password.required'=>'Bạn chưa nhập Password',
     		'password.min'=>'Password không được ít hơn 3 ký tự',
     		'password.max'=>'Password không được nhiều hơn 18 ký tự'

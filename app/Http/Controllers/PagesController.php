@@ -57,7 +57,7 @@ class PagesController extends Controller
     $this->validate($request,
             [
                 'name'=>'required|min:3',
-                'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+                'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
                 'password'=>'required|min:3|max:18',
                 'passwordAgain'=>'required|same:password'
         ]
@@ -86,6 +86,7 @@ class PagesController extends Controller
     }
     public function getHomePage()
     {
+        
         $post = Post::where('published','1')->orderBy('published_at','DESC')->paginate(5);
 		// $post = Post::all();
         

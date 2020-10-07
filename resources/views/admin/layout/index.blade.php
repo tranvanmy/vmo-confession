@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
+
+
     <title>Admin - Vmo confession</title>
+
 
     {{-- khai báo đường dẫn trong đây --}}
     <base href="{{asset('')}}">

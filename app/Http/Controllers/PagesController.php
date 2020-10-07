@@ -203,7 +203,13 @@ class PagesController extends Controller
 		
     }
 
-    //CONTACT
+    public function getDangXuatAdmin(){
+        Auth::logout();
+        return redirect('admin/post/danhsachdaduyet');
+
+
+
+
     public function getContact()
     {
         return view('pages.contact');
@@ -213,5 +219,6 @@ class PagesController extends Controller
     public function getIntroduct()
     {
         return view('pages.introduce');
+
     }
 }

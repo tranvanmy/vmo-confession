@@ -7,7 +7,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+
         <a class="navbar-brand" href="index.html">Admin - Vmo confession</a>
+
     </div>
     <!-- /.navbar-header -->
 
@@ -21,12 +23,12 @@
 
                 @if (Auth::check())
 
-                <li><a href="#"><i class="fa fa-user fa-fw"></i>{{Auth::user()->name}}</a>
+                <li><a href="nguoidung"><i class="fa fa-user fa-fw"></i>{{Auth::user()->name}}</a>
                 </li>
                 <li><a href="admin/user/sua/{{Auth::user()->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="admin/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="dangxuatadmin"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                 </li>
 
                 @endif

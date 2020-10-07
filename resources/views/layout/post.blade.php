@@ -54,9 +54,8 @@
                                     <!-- ENDPOPUP -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button id="btn-save" type="submit" class="btn btn-primary">Save
-                                            changes</button>
+                                            data-dismiss="modal">Đóng</button>
+                                        <button id="btn-save" type="submit" class="btn btn-primary">Đăng bài</button>
                                     </div>
                                 </form>
 

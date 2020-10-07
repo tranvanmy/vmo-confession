@@ -23,7 +23,7 @@
                      
                     </div>
                     
-                   @include('layout.post')
+                   
                 </div>
 
                 @if(session('thongbao'))
@@ -31,28 +31,11 @@
                         {{ session('thongbao') }}
                     </div>
                 @endif
-<<<<<<< HEAD
+                @include('layout.post')
 
-                @foreach($posthome as $post)
-                  
-                    <hr>
-                    <h4>Vmo Confession</h4>
-                    <h5>
-                    <a href="chitietbaipost/{{$post->id}}"><b>#{{ $post->id }}:</b> {{ $post->title }}</a>
-                    </h5>
-                    <p>{!! $post->content !!}</p>
-                    <!-- con -->
-                    <!-- <hr>
-                <p>2 like</p>
-                <hr> -->
-                    @include('layout.like')
-                    
-                @endforeach
-=======
             <!-- Show Post -->
                 @include('layout.showpost')
                 
->>>>>>> de1fdeb... 1/10 show post by top vote, role-permission for admin pages
                 
             </div>
             {!! $posthome->links('vendor.pagination.bootstrap-4') !!}

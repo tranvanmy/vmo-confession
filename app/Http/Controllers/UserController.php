@@ -102,12 +102,12 @@ class UserController extends Controller
     {
         $this->validate($request,
     	[
-    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
+    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{2,32}@vmo.vn$)',
     		'password'=>'required|min:3|max:18'
     	]
     	,[
-    		'email.required'=>'Bạn chưa nhập Email',
-    		'email.regex'=>'Email không đúng định dạng công ty',
+    		'email.required'=>'Bạn chưa nhập email',
+    		'email.regex'=>'Sai email hoặc mật khẩu',
     		'password.required'=>'Bạn chưa nhập Password',
     		'password.min'=>'Password không được ít hơn 3 ký tự',
     		'password.max'=>'Password không được nhiều hơn 18 ký tự'

@@ -12,11 +12,9 @@
                 </div>
                 <!-- /input-group -->
             </li>
+        
             <li>
-                <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                <a href="#"><i class="fas fa-user-alt"></i>Bài đăng<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/post/danhsachchuaduyet">Danh sách chưa duyệt</a>
@@ -31,29 +29,30 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-cube fa-fw"></i>Thống kê<span class="fa arrow"></span></a>
+                <a href="#"><i class="fas fa-user-alt"></i>Thống kê<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/thongke/baipost">thống kê</a>
+                        <a href="admin/thongke/baipost">Thống kê</a>
                     </li>
                     
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i>Chủ Đề<span class="fa arrow"></span></a>
+                <a href="#"><i class="far fa-thumbs-up"></i>Thể loại<span class="fa arrow"></span></a>
+                
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/category/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="admin/category/them">Thêm chủ đề</a>
+                        <a href="admin/category/them">Thêm thể loại</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+                <a href="#"><i class="fas fa-user-alt"></i> User<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/user/danhsach">Danh Sách</a>
@@ -64,18 +63,7 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a href="#"><i class="fa fa-users fa-fw"></i> Slide<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="admin/slide/danhsach">Danh sách</a>
-                    </li>
-                    <li>
-                        <a href="admin/slide/them">Thêm </a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+          
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

@@ -10,7 +10,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable,HasRoles;
+    use HasRoles;
+    use HasFactory, Notifiable;
     public function likes(){
         return $this->hasMany('App\Models\Like','id_user','id');
     }
@@ -41,4 +42,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 }

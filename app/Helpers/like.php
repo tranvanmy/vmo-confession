@@ -97,6 +97,21 @@ if (!function_exists('likePost')) {
             return count($post->comments()->get());
         }
     }
+    if (!function_exists('countVote')) {
+        function countVote($id)
+        {
+            $post = Post::find($id);
+            return count($post->votes()->get());
+        }
+    }
+    if (!function_exists('getComments')) {
+        function getComments($id)
+        {
+            $post = Post::find($id);
+            $comments = $post->comments->where('id_parent','like',NULL);
+            return $comments;
+        }
+    }
 }
 
 

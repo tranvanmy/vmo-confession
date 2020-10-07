@@ -150,47 +150,16 @@ $(document).ready(function(){
   });
 
 
+  //like comment
+  
   //vote
 
-  //  $(document).on('click','.btn-vote',function(){
-  //    var idvote = $(this).val();
-  //    $.post('vote/'+idvote, function(data){
-  //      $("#vt"+idvote).html(data);
-  //    })
-  //  })
-
-  //  $('#formVote').submit(function(e){
-  //    e.preventDefault();
-  //    var idVote = $('.btn-vote').val();
-  //    console.log(idVote)
-
-  //   //  $.ajax({
-  //   //     type:'POST',
-  //   //     cache:false,
-  //   //     url:'homepage',
-  //   //     data:{
-  //   //       _token:'{{csrf_token()}}',
-  //   //       point = $('#point'+idVote).val(),
-
-  //   //     },
-  //   //     success:function(data){
-  //   //       $('$vt'+idVote).html(data),
-  //   //       console.log('Submission was successful.')
-  //   //     },
-  //   //     error: function (data) {
-  //   //       console.log('An error occurred.');
-  //   //       console.log(data);
-  //   //       },
-  //   //  });
-  //  })
-
-
   $('.btn-vote').click(function (e) {
+    //console.log("toanto");
     e.preventDefault();
     var idpos = $(this).val()
     var pointVote = $('#point'+ idpos).val()
-    // console.log(point)
-    // console.log('---'+idpos)
+    //console.log(idpos)
     $.ajax({
       type: 'POST',
       url: 'vote/'+idpos,
@@ -212,7 +181,7 @@ $(document).ready(function(){
 
       },
     });
-  })
+  });
 
 });
 

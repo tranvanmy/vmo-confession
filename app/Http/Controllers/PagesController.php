@@ -20,7 +20,7 @@ class PagesController extends Controller
     function postDangnhap(Request $request){
       	$this->validate($request,
     	[
-    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{2,32}@vmo.vn$)',
     		'password'=>'required|min:3|max:18'
     	]
     	,[
@@ -57,7 +57,7 @@ class PagesController extends Controller
     $this->validate($request,
             [
                 'name'=>'required|min:3',
-                'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{5,32}@vmo.vn$)',
+                'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
                 'password'=>'required|min:3|max:18',
                 'passwordAgain'=>'required|same:password'
         ]
@@ -86,6 +86,7 @@ class PagesController extends Controller
     }
     public function getHomePage()
     {
+        
         $post = Post::where('published','1')->orderBy('published_at','DESC')->paginate(5);
 		// $post = Post::all();
         
@@ -184,11 +185,33 @@ class PagesController extends Controller
         return view('pages.topLike',['posthome'=>$post]);
 		
     }
+
+    //Top comment
     public function getTopComment()
     {
         $post = Post::withCount('comments')->orderBy('comments_count','DESC')->paginate(6);
         
         return view('pages.topComment',['posthome'=>$post]);
 		
+    }
+    //Top Vote
+    public function getTopVote()
+    {
+        $post = Post::withCount('votes')->orderBy('votes_count','DESC')->paginate(6);
+
+        return view('pages.topVote',['posthome'=>$post]);
+		
+    }
+
+    //CONTACT
+    public function getContact()
+    {
+        return view('pages.contact');
+    }
+
+    // Introduct
+    public function getIntroduct()
+    {
+        return view('pages.introduce');
     }
 }

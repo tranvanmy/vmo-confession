@@ -19,16 +19,17 @@
             <ul class="nav navbar-nav">
                 <li>
 
-                    <a href="#">Giới thiệu</a>
+                    <a href="introduct">Giới thiệu</a>
                 </li>
                 <li>
-                    <a href="#">Liên hệ</a>
+                    <a href="contact">Liên hệ</a>
 
                 </li>
+                @role('admin')
                 <li>
                     <a href="admin/post/danhsachchuaduyet">Admin</a>
-
                 </li>
+                @endrole
             </ul>
 
             <form class="navbar-form navbar-left" role="search" action="search" method="POST">
@@ -40,7 +41,7 @@
                 <div class="form-group">
 
                     <select class="form-control" name="category" style="color: blu">
-                        <option value="0" selected>Tất Cả thể loại</option>
+                        <option value="0" selected>Tất cả thể loại</option>
                         @foreach($category as $tl)
 
                             <option value={{ $tl->id }}>{{ $tl->title }}</option>
@@ -74,7 +75,6 @@
                         <a href="dangnhap">Đăng nhập</a>
                     </li>
                 @endif
-
 
 
 

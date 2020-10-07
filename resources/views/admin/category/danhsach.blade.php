@@ -6,8 +6,8 @@
    <div class="container-fluid">
        <div class="row">
            <div class="col-lg-12">
-               <h1 class="page-header">Loại Tin
-                   <small></small>
+               <h1 class="page-header">Thể loại
+                   <small>Danh sách</small>
                </h1>
            </div>
            <!-- /.col-lg-12 -->
@@ -18,31 +18,22 @@
            @endif
            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                <thead>
-                   <tr align="center">
+                   <tr >
                        <th>ID</th>
                        <th>Tên thể loại</th>
-                       <th>Tên loại tin</th>
-                       <th>Tên không giấu</th>
-                       <th>Delete</th>
-                       <th>Edit</th>
+                       <th>create_at</th>
+                       <th>Xóa</th>
+                       <th>Sửa</th>
                    </tr>
                </thead>
                <tbody>
-                   @foreach ($loaitin as $lt)
-                        <tr class="even gradeC" align="center">
-                            <td>{{$lt->id}}</td>
-
-                            {{-- @foreach ($theloai as $tl)
-                                @if ($tl->id == $lt->idTheLoai)
-                                    <td>{{$tl->Ten}}</td>
-                                    @break;
-                                @endif
-                             @endforeach --}}
-                            <td>{{$lt->theloai->Ten}}</td>
-                            <td>{{$lt->Ten}}</td>
-                            <td>{{$lt->TenKhongDau}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaitin/xoa/{{$lt->id}}"> Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaitin/sua/{{$lt->id}}">Edit</a></td>
+                   @foreach ($categories as $ct)
+                        <tr class="even gradeC">
+                            <td>{{$ct->id}}</td>
+                            <td>{{$ct->title}}</td>
+                            <td>{{$ct->created_at}}</td>
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/category/xoa/{{$ct->id}}"> Xóa</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/category/sua/{{$ct->id}}">Sửa</a></td>
                         </tr>
                    @endforeach
                </tbody>

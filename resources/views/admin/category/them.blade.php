@@ -7,8 +7,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Loại Tin
-                    <small></small>
+                <h1 class="page-header">Thể loại
+                    <small>Thêm</small>
                 </h1>
             </div>
             <!-- /.col-lg-12 -->
@@ -28,20 +28,12 @@
                 </div>
             @endif
 
-                <form action="admin/loaitin/them" method="POST">
+                <form action="admin/category/them" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
+
                     <div class="form-group">
-                        <label>Loại Tin</label>
-                        <select class="form-control" name="theloai">
-                            @foreach ($theloai as $item)
-                                <option value="{{$item->id}}">{{$item->Ten}}</option>
-                            @endforeach
-                    
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Tên loại tin</label>
-                        <input class="form-control" name="Ten" placeholder="Please Enter Category Name" />
+                        <label>Tên thể loại</label>
+                        <input class="form-control" name="title" placeholder="Please Enter Category Name" />
                     </div>
     
                     <button type="submit" class="btn btn-default">Thêm</button>

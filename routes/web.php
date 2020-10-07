@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjaxLikeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChiTietBaiPostController;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,9 @@ Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']);
 Route::post('vote/{idpost}', [AjaxLikeController::class,'postVote']);
 Route::get('toplike', [PagesController::class,'getTopLike']);
 Route::get('topcomment', [PagesController::class,'getTopComment']);
+Route::get('topvote', [PagesController::class,'getTopVote']);
+Route::get('contact', [PagesController::class,'getContact']);
+Route::get('introduct', [PagesController::class,'getIntroduct']);
 
 
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
@@ -88,7 +92,7 @@ Route::get('dalikecommentrep/{id}',[AjaxLikeController::class,'getDaLikeCommentR
 Route::get('dislikecommentrep/{id}',[AjaxLikeController::class,'getdisLikeCommentRep']);
 Route::get('dadislikecommentrep/{id}',[AjaxLikeController::class,'getDadisLikeCommentRep']);
 
-Route::group(['prefix'=>'admin','middleware' => ['role:admin']],function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::group(['prefix'=>'post'],function(){
         Route::get('danhsachchuaduyet',[PostController::class,'getDanhSachChuaDuyet']);
         Route::get('danhsachdaduyet',[PostController::class,'getDanhSachDaDuyet']);
@@ -102,4 +106,23 @@ Route::group(['prefix'=>'admin','middleware' => ['role:admin']],function(){
         Route::get('baipost',[ThongKeController::class,'getThongKeBaiPost']);
         Route::post('baiposttrave',[ThongKeController::class,'getBaiPostTrave']);
     });
+    Route::group(['prefix'=>'category'],function(){
+        Route::get('danhsach',[CategoryController::class,'getDanhSach']);
+        Route::get('xoa/{id}',[CategoryController::class,'getXoa']);
+        Route::get('sua/{id}',[CategoryController::class,'getSua']);
+        Route::post('sua/{id}',[CategoryController::class,'postSua']);
+        Route::get('them',[CategoryController::class,'getThem']);
+        Route::post('them',[CategoryController::class,'postThem']);
+    });
+    Route::group(['prefix'=>'user'],function(){
+        Route::get('danhsach',[UserController::class,'getDanhSach']);
+        Route::get('xoa/{id}',[UserController::class,'xoa']);
+        Route::get('sua/{id}',[UserController::class,'getSua']);
+        Route::post('sua/{id}',[UserController::class,'postSua']);
+        Route::get('them',[UserController::class,'getThem']);
+        Route::post('them',[UserController::class,'postThem']);
+    });
 });
+Route::get('admin/login',[UserController::class,'getLogin']);
+Route::post('admin/login',[UserController::class,'postLogin']);
+

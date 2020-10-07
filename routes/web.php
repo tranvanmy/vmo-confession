@@ -40,11 +40,11 @@ Route::get('/', function () {
     //$role->givePermissionTo($permission);
     //$permission->assignRole($role);
 
-    $user = User::find(2);
+    // $user = User::find(2);
     //$user->givePermissionTo(['like posts', 'dislike posts']);
-    $user->syncPermissions(['comment posts', 'rate posts']);
+    // $user->syncPermissions(['comment posts', 'rate posts']);
 
-    //return view('welcome');
+   return view('welcome');
 });
 
 Route::get('dangnhap',[PagesController::class,'getDangnhap']);
@@ -54,7 +54,7 @@ Route::post('dangnhap',[PagesController::class,'postDangnhap']);
 Route::get('homepage', [PagesController::class,'getHomePage']);
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
-Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']); 
+Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']);
 Route::post('vote/{idpost}', [AjaxLikeController::class,'postVote']);
 Route::get('toplike', [PagesController::class,'getTopLike']);
 Route::get('topcomment', [PagesController::class,'getTopComment']);

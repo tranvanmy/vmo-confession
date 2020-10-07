@@ -50,7 +50,8 @@ class PagesController extends Controller
 
    function getNguoiDung()
    {
-        return view('pages.nguoidung');
+        $user = Auth::user();
+        return view('pages.nguoidung',['nguoidung'=>$user]);
    }
 
    function postNguoiDung(Request $request){
@@ -207,7 +208,7 @@ class PagesController extends Controller
         Auth::logout();
         return redirect('admin/post/danhsachdaduyet');
 
-
+    }
 
 
     public function getContact()

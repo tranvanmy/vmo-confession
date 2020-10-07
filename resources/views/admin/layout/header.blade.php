@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="navbar-brand" href="index.html">Admin - Vmo confession</a>
+        <a class="navbar-brand" href="admin/post/danhsachdaduyet">Admin - Vmo confession</a>
 
     </div>
     <!-- /.navbar-header -->

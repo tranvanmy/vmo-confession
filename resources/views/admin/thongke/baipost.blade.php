@@ -6,16 +6,20 @@
    <div class="container-fluid">
        <div class="row">
            <div class="col-lg-12">
-               <h1 class="page-header">Thống kê Post
+               <h1 class="page-header">Thống kê bài đăng
                 <div class="form-group">
                     <h6>
                         <form action="admin/thongke/baiposttrave" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                         <select name="nam" id = "nam">
-                            @for ($i = 2017; $i < $namhientai; $i++)
-                                <option value={{$i}}>{{$i}}</option>
+                            {{-- <option value={{$namxet}} selected="selected">{{$namxet}}</option> --}}
+                            @for ($i = $namhientai; $i > 2016; $i--)
+                                @if ($i == $namxet)
+                                    <option value={{$namxet}} selected="selected">{{$namxet}}</option>
+                                @else
+                                    <option value={{$i}}>{{$i}}</option>
+                                @endif
                             @endfor
-                            <option value={{$namhientai}} selected="selected">{{$namhientai}}</option>
                         </select>
                         <button  class=".btn-thongkepost">Xem</button>
                         </form>
@@ -35,7 +39,7 @@
             @endif
            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                <thead>
-                   <tr align="center">
+                   <tr>
                        <th>Chủ Đề</th>
                        <th>Tháng 1</th>
                        <th>Tháng 2</th>
@@ -60,7 +64,7 @@
                    <?php
                         $tong = 0;
                    ?>
-                        <tr class="even gradeC" align="center">
+                        <tr class="even gradeC">
                             <td>{{$ct->title}}</td>
                             @for ($i = 1; $i <= 12; $i++)
                                 <?php

@@ -42,8 +42,8 @@
         </th>
         
         <th>
-            <a href="chitietbaipost/{{$post->id}}"><button type="button" class="btn btn-primary">
-                Comment (<?php echo countComment($post->id) ?>)</button>
+            <a href="chitietbaipost/{{$post->id}}"><button type="button" class="btn btn-primary btn-comment">
+                Bình luận (<?php echo countComment($post->id) ?>)</button>
             </a>
         </th>
         <!-- //  VOTE  -->

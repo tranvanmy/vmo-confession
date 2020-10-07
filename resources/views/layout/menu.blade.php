@@ -1,6 +1,6 @@
 <div class="col-md-3 ">
-    <ul class="list-group" id="menu">
-        <li href="homepage" class="list-group-item menu1 active">
+    <ul class="list-group" id="menu" style="cursor:pointer">
+        <li href="homepage" class="list-group-item menu1 active" style="cursor:auto">
             Menu
         </li>
         

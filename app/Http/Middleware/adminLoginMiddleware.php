@@ -19,9 +19,11 @@ class adminLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! $request->user()->hasRole('admin')) {
-            return redirect('admin/login')->with('thongbao','Đăng nhập thất bại');
-        }else return $next($request);
+        if(Auth::check()){
+            if (! $request->user()->hasRole('admin')) {
+                return redirect('admin/login')->with('thongbao','Mời bạn đăng nhập bằng tài khoản admin');
+            }else return $next($request);
+        }else return redirect('admin/login')->with('thongbao','Mời bạn đăng nhập bằng tài khoản admin');
     
     }
 }

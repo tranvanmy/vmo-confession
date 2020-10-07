@@ -21,7 +21,6 @@
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
-
     @yield('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -61,6 +60,8 @@
     
     <!-- <script src="js/post.js"></script> -->
     <script src="js/starrr.js"></script>
+    <!-- <script src="js/comment.js"></script> -->
+    <script src="js/all.js"></script>
     
 </body>
 

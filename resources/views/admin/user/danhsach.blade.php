@@ -6,8 +6,8 @@
    <div class="container-fluid">
        <div class="row">
            <div class="col-lg-12">
-               <h1 class="page-header">Loại Tin
-                   <small></small>
+               <h1 class="page-header">User
+                   <small>Danh sách</small>
                </h1>
            </div>
            <!-- /.col-lg-12 -->
@@ -22,7 +22,7 @@
             @endif
            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                <thead>
-                   <tr align="center">
+                   <tr>
                        <th>ID</th>
                        <th>Name</th>
                        <th>Email</th>
@@ -33,7 +33,7 @@
                </thead>
                <tbody>
                    @foreach ($users as $us)
-                        <tr class="even gradeC" align="center">
+                        <tr class="even gradeC" >
                             <td>{{$us->id}}</td>
                             <td>{{$us->name}}</td>
                             <td>{{$us->email}}</td>

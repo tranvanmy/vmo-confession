@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Post
+                <h1 class="page-header">Bài đăng
                     <small>thêm</small>
                 </h1>
             </div>
@@ -32,7 +32,7 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
                     
                     <div class="form-group">
-                        <label>Chủ Đề</label>
+                        <label>Thể loại</label>
                         <select class="form-control" name="category" id="category">
                             @foreach ($categories as $ct)
                                 <option value="{{$ct->id}}">{{$ct->title}}</option>

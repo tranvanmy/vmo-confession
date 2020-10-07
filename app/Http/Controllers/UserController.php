@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\model_has_role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class UserController extends Controller
 
     public function getSua($idUser){
         $user = User::find($idUser);
-        return view('admin.user.sua',['user'=>$user]);
+        $model_has_roles = model_has_role::all();
+        return view('admin.user.sua',['user'=>$user,'model_has_roles'=>$model_has_roles]);
     }
 
     public function postSua(Request $request,$id){
@@ -52,6 +54,24 @@ class UserController extends Controller
                 'passwordAgain.same' => 'Mật khẩu nhập lại chưa khớp'
             ]);
             $user->password = bcrypt($request->password);
+        }
+        //$model_has_roles = model_has_role::all();
+        if($request->quyen == 'nguoidung'){
+            $model_has_roles = model_has_role::where('model_id','=',$user->id)->delete();
+            $model_has_role_curent = new model_has_role();
+            $model_has_role_curent->role_id = 2;
+            $model_has_role_curent->model_type = 'App\Models\User';
+            $model_has_role_curent->model_id = $user->id;
+
+            $model_has_role_curent->save();
+        }if($request->quyen == 'admin'){
+            $model_has_roles = model_has_role::where('model_id','=',$user->id)->delete();
+            $model_has_role_curent = new model_has_role();
+            $model_has_role_curent->role_id = 1;
+            $model_has_role_curent->model_type = 'App\Models\User';
+            $model_has_role_curent->model_id = $user->id;
+
+            $model_has_role_curent->save();
         }
 
         $user->save();
@@ -83,7 +103,7 @@ class UserController extends Controller
             'passwordAgain.required' => 'Bạn chưa nhập lại mật khấu',
             'passwordAgain.same' => 'Mật khẩu nhập lại chưa khớp'
         ]);
-
+    
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -92,6 +112,21 @@ class UserController extends Controller
 
         $user->save();
 
+        if($request->quyen == 'nguoidung'){
+            $model_has_roles = new model_has_role();
+            $model_has_roles->role_id = 2;
+            $model_has_roles->model_type = 'App\Models\User';
+            $model_has_roles->model_id = $user->id;
+
+            $model_has_roles->save();
+        }if($request->quyen == 'admin'){
+            $model_has_roles = new model_has_role();
+            $model_has_roles->role_id = 1;
+            $model_has_roles->model_type = 'App\Models\User';
+            $model_has_roles->model_id = $user->id;
+
+            $model_has_roles->save();
+        }
         return redirect('admin/user/them')->with('themthanhcong','thêm user thành công');
         }
     public function getLogin()
@@ -102,12 +137,12 @@ class UserController extends Controller
     {
         $this->validate($request,
     	[
-    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
+    		'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{2,32}@vmo.vn$)',
     		'password'=>'required|min:3|max:18'
     	]
     	,[
-    		'email.required'=>'Bạn chưa nhập Email',
-    		'email.regex'=>'Email không đúng định dạng công ty',
+    		'email.required'=>'Bạn chưa nhập email',
+    		'email.regex'=>'Sai email hoặc mật khẩu',
     		'password.required'=>'Bạn chưa nhập Password',
     		'password.min'=>'Password không được ít hơn 3 ký tự',
     		'password.max'=>'Password không được nhiều hơn 18 ký tự'

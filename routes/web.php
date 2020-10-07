@@ -9,7 +9,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ThongKeController;
-use Spatie\Permission\Contracts\Role;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 /*
@@ -24,7 +27,24 @@ use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //$role = Role::create(['name'=>'admin']);
+    //$permission = Permission::create(['name' => 'publish posts']);
+    // $permission = Permission::create(['name' => 'like posts']);
+    // $permission = Permission::create(['name' => 'dislike posts']);
+    // $permission = Permission::create(['name' => 'comment posts']);
+    // $permission = Permission::create(['name' => 'rate posts']);
+
+    // $role = Role::find(1);
+    // $permission = Permission::find(3);
+    // $role->revokePermissionTo($permission);
+    //$role->givePermissionTo($permission);
+    //$permission->assignRole($role);
+
+    $user = User::find(2);
+    //$user->givePermissionTo(['like posts', 'dislike posts']);
+    $user->syncPermissions(['comment posts', 'rate posts']);
+
+    //return view('welcome');
 });
 
 Route::get('dangnhap',[PagesController::class,'getDangnhap']);

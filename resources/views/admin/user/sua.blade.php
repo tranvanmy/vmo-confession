@@ -48,25 +48,32 @@
                         <label>Nhập lại Password</label>
                         <input  type="password" class="form-control password" name="passwordAgain" placeholder="Nhập lại password" disabled="" />
                     </div>
-                    {{-- <div class="form-group">
+
+                    <?php
+                        $kt = false;
+                        if(count($model_has_roles->where('model_id','=',$user->id)->where('role_id','=',1)) >= 1){
+                            $kt = true;
+                        }                
+                    ?>
+                    <div class="form-group">
                         <label>Quyền</label>
                         <label class="radio-inline">
-                            <input name="quyen" value="0"  type="radio"
-                                @if ($user->quyen == 0)
-                                    {{'checked'}}
+                            <input name="quyen" value="nguoidung"  type="radio"
+                                @if ($kt == false)
+                                {{'checked'}}
                                 @endif
                             >
                             Thường
                         </label>
                         <label class="radio-inline">
-                            <input name="quyen" value="1" type="radio"
-                                @if ($user->quyen == 1)
-                                    {{'checked'}}
-                                @endif
+                            <input name="quyen" value="admin" type="radio"
+                            @if ($kt == true)
+                            {{'checked'}}
+                            @endif
                             >
                             Admin
                         </label>
-                    </div> --}}
+                    </div>
     
                     <button type="submit" class="btn btn-default">Sửa</button>
                     <button type="reset" class="btn btn-default">Làm mới</button>

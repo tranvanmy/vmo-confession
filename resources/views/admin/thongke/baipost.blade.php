@@ -12,10 +12,14 @@
                         <form action="admin/thongke/baiposttrave" method="post">
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                         <select name="nam" id = "nam">
-                            @for ($i = 2017; $i < $namhientai; $i++)
-                                <option value={{$i}}>{{$i}}</option>
+                            {{-- <option value={{$namxet}} selected="selected">{{$namxet}}</option> --}}
+                            @for ($i = $namhientai; $i > 2016; $i--)
+                                @if ($i == $namxet)
+                                    <option value={{$namxet}} selected="selected">{{$namxet}}</option>
+                                @else
+                                    <option value={{$i}}>{{$i}}</option>
+                                @endif
                             @endfor
-                            <option value={{$namhientai}} selected="selected">{{$namhientai}}</option>
                         </select>
                         <button  class=".btn-thongkepost">Xem</button>
                         </form>

@@ -47,15 +47,15 @@
                         <label>Nhập lại Password</label>
                         <input  type="password" class="form-control" name="passwordAgain" placeholder="Nhập lại password" />
                     </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label>Quyền</label>
                         <label class="radio-inline">
-                            <input name="quyen" value="0" checked="" type="radio">Thường
+                            <input name="quyen" value="nguoidung" checked="" type="radio">Thường
                         </label>
                         <label class="radio-inline">
-                            <input name="quyen" value="1" type="radio">Admin
+                            <input name="quyen" value="admin" type="radio">Admin
                         </label>
-                    </div> --}}
+                    </div>
     
                     <button type="submit" class="btn btn-default">Thêm</button>
                     <button type="reset" class="btn btn-default">Làm mới</button>

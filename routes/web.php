@@ -30,8 +30,8 @@ Route::get('/', function () {
 Route::get('dangnhap',[PagesController::class,'getDangnhap']);
 Route::post('dangnhap',[PagesController::class,'postDangnhap']);
 
-
-Route::get('homepage', [PagesController::class,'getHomePage'])->middleware('loginmiddleware');
+  Route::group(['middleware'=>'loginmiddleware'],function(){
+Route::get('homepage', [PagesController::class,'getHomePage']);
 Route::post('search', [PagesController::class,'getSearch']);
 Route::post('Post', [PagesController::class,'Post']);
 Route::get("PostbyCategory/{id}", [PagesController::class,'getPostbyCategory']); 
@@ -41,14 +41,17 @@ Route::get('topcomment', [PagesController::class,'getTopComment']);
 Route::get('topvote', [PagesController::class,'getTopVote']);
 
 
-Route::get('dangxuat',[PagesController::class,'getDangXuat']);
-
-
-
-Route::get('nguoidung',[PagesController::class,'getNguoiDung'])->middleware('loginmiddleware');
+Route::get('nguoidung',[PagesController::class,'getNguoiDung']);
 Route::post('nguoidung',[PagesController::class,'postNguoiDung']);
 
-Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet'])->middleware('loginmiddleware');
+
+Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
+Route::get('dangxuat',[PagesController::class,'getDangXuat']);
+});
+
+
+
+
 Route::post('comment/{id}',[ChiTietBaiPostController::class,'postComment']);
 Route::post('repcomment/{idcm}/{idpost}',[ChiTietBaiPostController::class,'postRepComment']);
 
@@ -100,7 +103,11 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         Route::get('them',[UserController::class,'getThem']);
         Route::post('them',[UserController::class,'postThem']);
     });
+
+
 });
+
+Route::get('dangxuatadmin',[UserController::class,'getDangXuatAdmin']);
 Route::get('admin/login',[UserController::class,'getLogin']);
 Route::post('admin/login',[UserController::class,'postLogin']);
 

@@ -7,7 +7,7 @@
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
 
-    <title>Admin - HOÀNG SƠN</title>
+    <title>Admin</title>
     <<base href="{{ asset('') }}" >
 
     <!-- Bootstrap Core CSS -->

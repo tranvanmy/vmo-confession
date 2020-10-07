@@ -201,4 +201,9 @@ class PagesController extends Controller
         return view('pages.topVote',['posthome'=>$post]);
 		
     }
+    public function getDangXuatAdmin(){
+        Auth::logout();
+        return redirect('admin/post/danhsachdaduyet');
+
+    }
 }

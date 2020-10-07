@@ -35,12 +35,12 @@
 							<br>
 							<div>
 				    			<label>Email</label>
-							  	<input type="email" class="form-control" placeholder="Email" name="email" aria-describedby="basic-addon1"
+							  	<input type="email" class="form-control" placeholder="Email" name="email" aria-describedby="basic-addon1" disabled="disabled" 
 							  	>
 							</div>
 							<br>	
 							<div>
-								<input type="checkbox" class="" name="checkpassword">
+								
 				    			<label>Nhập mật khẩu</label>
 							  	<input type="password" class="form-control" name="password" aria-describedby="basic-addon1">
 							</div>

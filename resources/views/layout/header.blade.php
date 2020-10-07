@@ -25,6 +25,10 @@
                     <a href="#">Liên hệ</a>
 
                 </li>
+                <li>
+                    <a href="admin/post/danhsachchuaduyet">Admin</a>
+
+                </li>
             </ul>
 
             <form class="navbar-form navbar-left" role="search" action="search" method="POST">

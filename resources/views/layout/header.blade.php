@@ -41,7 +41,7 @@
                 <div class="form-group">
 
                     <select class="form-control" name="category" style="color: blu">
-                        <option value="0" selected>Tất cả thể loại</option>
+                        <option value='0' selected="selected">Tất cả thể loại</option>
                         @foreach($category as $tl)
 
                             <option value={{ $tl->id }}>{{ $tl->title }}</option>
@@ -50,7 +50,7 @@
 
                     </select>
                 </div>
-                <button type="submit" class="btn btn-default">Tìm kiếm</button>
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
             </form>
 
             <ul class="nav navbar-nav pull-right">

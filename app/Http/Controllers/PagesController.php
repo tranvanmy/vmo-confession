@@ -7,6 +7,7 @@ use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Support\Facades\DB;
 
@@ -56,33 +57,66 @@ class PagesController extends Controller
    }
 
    function postNguoiDung(Request $request){
-    $this->validate($request,
-            [
-                'name'=>'required|min:3',
-                'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
-                'password'=>'required|min:3|max:18',
-                'passwordAgain'=>'required|same:password'
-        ]
-        ,
-        [
-            'name.required'=>' Bạn chưa nhập tên người dùng',
-            'name.min'=>'Tên người dùng phải có ít nhất 3 ký tự', 
-            'email.required'=>'Bạn chưa nhập Email',
-            'email.regex'=>'Email không đúng định dạng công ty',
-            'password.required'=>'Bạn chưa nhập Password',
-            'password.min'=>'Password không được ít hơn 3 ký tự',
-            'password.max'=>'Password không được nhiều hơn 18 ký tự',
-            'passwordAgain.required'=>'Bạn chưa nhập lại mật khẩu',
-            'passwordAgain.same'=>'Mật khẩu nhập lại chưa khớp'
+    // $this->validate($request,
+    //         [
+    //             'name'=>'required|min:3',
+    //             'email'=>'required|max:255|regex: (^[a-z][a-z0-9_\.]{3,32}@vmo.vn$)',
+    //             'password'=>'required|min:3|max:18',
+    //             'passwordAgain'=>'required|same:password'
+    //     ]
+    //     ,
+    //     [
+    //         'name.required'=>' Bạn chưa nhập tên người dùng',
+    //         'name.min'=>'Tên người dùng phải có ít nhất 3 ký tự', 
+    //         'email.required'=>'Bạn chưa nhập Email',
+    //         'email.regex'=>'Email không đúng định dạng công ty',
+    //         'password.required'=>'Bạn chưa nhập Password',
+    //         'password.min'=>'Password không được ít hơn 3 ký tự',
+    //         'password.max'=>'Password không được nhiều hơn 18 ký tự',
+    //         'passwordAgain.required'=>'Bạn chưa nhập lại mật khẩu',
+    //         'passwordAgain.same'=>'Mật khẩu nhập lại chưa khớp'
         
-        ]);
+    //     ]);
 
    
-        $user = Auth::user();
-        $user->name = $request->name;
+    //     $user = Auth::user();
+    //     $user->name = $request->name;
      
-        $user->password = bcrypt($request->password);
+    //     $user->password = bcrypt($request->password);
         //$user->save();
+
+        $this->validate($request,[
+            'name' => 'required|min:3'
+            
+        ],[
+            'name.required' => 'Bạn chưa nhập tên người dùng',
+            'name.min' => 'Tên người dùng phải nhiều hơn ba kí tự'
+
+        ]);
+
+        $au = Auth::user();
+
+        $user = User::find($au->id);
+        $user->name = $request->name;
+        if($request->changePassword == 'on'){
+            $this->validate($request,[
+                'password' => 'required|min:3|max:32',
+                'passwordAgain' => 'required|same:password'
+            ],[
+                'password.required' => 'Bạn chưa nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải có ít nhất ba kí tự',
+                'password.max' => 'Mật khẩu chỉ được nhất 32 kí tự',
+                'passwordAgain.required' => 'Bạn chưa nhập lại mật khấu',
+    
+                'passwordAgain.same' => 'Mật khẩu nhập lại chưa khớp'
+            ]);
+            $user->password = bcrypt($request->password);
+        }
+
+        //$user->update(['name'=>$request->name,'password'=> bcrypt($request->password)]);
+        //Auth::setUser($user);
+
+        $user->save();
         return redirect('nguoidung')->with('thongbao','sửa thành công');
 
     }
@@ -108,7 +142,7 @@ class PagesController extends Controller
                     ->where('title','like',"%$keyword%");
             })->orwhere(function($query) use ($keyword) {
                 $query->where('published',1)
-                    ->where('title','like',"%$keyword%");
+                    ->where('content','like',"%$keyword%");
             })->orderBy('published_at','DESC')->take(30)->paginate(10);
         }else{
             // $post = Category::find($request->category)->post()->where('title','like',"%$keyword%")
@@ -116,13 +150,13 @@ class PagesController extends Controller
             // ->get();
             $post = Post::where(function($query) use ($keyword,$id_category){
                     $query->where('title','like',"%$keyword%")
-                    ->where('published',1)
+                    ->where('published','=',1)
                     ->whereHas('category',function($query) use ($id_category){
                         $query->where('id',$id_category);
                     });
                 })->orwhere(function($query) use ($keyword,$id_category){
                 $query->where('content','like',"%$keyword%")
-                ->where('published',1)
+                ->where('published','=',1)
                 ->whereHas('category',function($query) use ($id_category){
                     $query->where('id',$id_category);
                 });

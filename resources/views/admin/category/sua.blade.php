@@ -35,8 +35,8 @@
                         <input class="form-control" name="title" placeholder="Please Enter Category Name" value="{{$category->title}}" />
                     </div>
                     
-                    <button type="submit" class="btn btn-default">Sửa</button>
-                    <button type="reset" class="btn btn-default">Làm mới</button>
+                    <button type="submit" class="btn btn-primary">Sửa</button>
+                    <button type="reset" class="btn btn-primary">Làm mới</button>
                 <form>
             </div>
         </div>

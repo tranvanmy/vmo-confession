@@ -21,7 +21,7 @@
                    <tr >
                        <th>ID</th>
                        <th>Tên thể loại</th>
-                       <th>create_at</th>
+                       <th>Ngày tạo</th>
                        <th>Xóa</th>
                        <th>Sửa</th>
                    </tr>

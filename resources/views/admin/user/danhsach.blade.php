@@ -24,11 +24,12 @@
                <thead>
                    <tr>
                        <th>ID</th>
-                       <th>Name</th>
+                       <th>Tên</th>
                        <th>Email</th>
-                       <th>Created_at</th>
-                       <th>Delete</th>
-                       <th>Edit</th>
+                       <th>Chức vụ</th>
+                       <th>Ngày tạo</th>
+                       <th>Xóa</th>
+                       <th>Sửa</th>
                    </tr>
                </thead>
                <tbody>
@@ -37,9 +38,20 @@
                             <td>{{$us->id}}</td>
                             <td>{{$us->name}}</td>
                             <td>{{$us->email}}</td>
+                            <?php
+                                $kt = false;
+                                if(count($model_has_roles->where('model_id','=',$us->id)->where('role_id','=',1)) >= 1){
+                                    $kt = true;
+                                }                
+                            ?>
+                            @if ($kt == false)
+                                <td>Thành viên</td>
+                            @else
+                                <td>Admin</td>
+                            @endif
                             <td>{{$us->created_at}}</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$us->id}}"> Delete</a></td>
-                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$us->id}}">Edit</a></td>    
+                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$us->id}}">Xóa</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$us->id}}">Sửa</a></td>    
                         </tr>
                    @endforeach
                </tbody>

@@ -31,10 +31,10 @@ $(document).ready(function(){
       var idPost = $(this).val();
       //console.log(idPost)
         $.get('like/'+idPost,function(data){
-          $("#like"+idPost).html(data);
+          $("#likep"+idPost).html(data);
         });
         $.get('dadislike/'+idPost,function(data){
-          $("#dislike"+idPost).html(data);
+          $("#dislikep"+idPost).html(data);
       });
     });
   
@@ -43,7 +43,7 @@ $(document).ready(function(){
       //console.log(idPost)
       $.get('dalike/'+idPost,function(data){
         //alert(data);
-        $("#like"+idPost).html(data);
+        $("#likep"+idPost).html(data);
       });
     });
     
@@ -52,17 +52,17 @@ $(document).ready(function(){
       //alert("12345")
         var idPost = $(this).val();
         $.get('dislike/'+idPost,function(data){
-            $("#dislike"+idPost).html(data);
+            $("#dislikep"+idPost).html(data);
         });
         $.get('dalike/'+idPost,function(data){
-            $("#like"+idPost).html(data);
+            $("#likep"+idPost).html(data);
         });
     });
 
     $(document).on('click','.btn-dadislike', function(){
       var idPost = $(this).val();
-      $.get('dadislike/'+idPost,function(data){
-          $("#dislike"+idPost).html(data);
+      $.get('dadislikep/'+idPost,function(data){
+          $("#dislikep"+idPost).html(data);
       });
     });
 
@@ -150,7 +150,6 @@ $(document).ready(function(){
   });
 
 
-  //like comment
   
   //vote
 
@@ -163,6 +162,7 @@ $(document).ready(function(){
     $.ajax({
       type: 'POST',
       url: 'vote/'+idpos,
+      dataType: 'json',
       data:
       // {
       //     _token:"{{ csrf_token() }}",
@@ -171,9 +171,11 @@ $(document).ready(function(){
       // },
       $('#myForm'+idpos).serialize(),
       success: function (data) {
-        $('#vt'+idpos).html(data),
+        $('#vt'+idpos).html(data.tb + '/5');
+        $('#resultVote'+idpos).html(data.sl);
         $('#exampleModal'+idpos).modal('hide');
-        $('#btn-'+idpos).removeAttr('style');
+        // $('#btn-'+idpos).removeAttr('style');
+        $('#btn-'+idpos).removeClass('btnhover')
           console.log('Submission was successful.')
       },
       error: function (data) {

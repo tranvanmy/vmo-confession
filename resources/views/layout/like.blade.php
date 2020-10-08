@@ -2,11 +2,13 @@
     <tr align="center">
         {{-- <input type="hidden" name="idPost" id="idPost" value={{$post->id }}>
         --}}
-        <th id="like{{ $post->id }}">
+        <th id="likep{{ $post->id }}">
 
             @if(likePost($post->id) == true )
             <?php echo countLike($post->id)?>
-            <button id="btnLike" name="btnLike" value="{{ $post->id }}" class="bg-dark text-white btn-like">
+            <button id="btnLike" name="btnLike" value="{{ $post->id }}" class="btn btn-default btn-like"
+            {{-- <button id="btnLike" name="btnLike" value="{{ $post->id }}"  class="btn btn-default glyphicon glyphicon-hand-up" --}}
+                >
                 {{-- <p id="like" name="like"> --}}
                  Like
             </button>
@@ -21,11 +23,11 @@
             @endif
 
         </th>
-        <th id="dislike{{ $post->id }}">
+        <th id="dislikep{{ $post->id }}">
 
             @if(disLikePost($post->id) == true)
             <?php echo countDisLike($post->id) ?>
-            <button id="btndisLike" name="btndisLike" value="{{ $post->id }}" class="bg-dark text-white btn-dislike">
+            <button id="btndisLike" name="btndisLike" value="{{ $post->id }}" class="btn btn-default btn-dislike">
                 {{-- <p id="like" name="like"> --}}
                  disLike
             </button>
@@ -55,7 +57,7 @@
                 </span>  
                 <button  type="button" class="btn btn-primary" data-toggle="modal" id="btn-{{$post->id}}"
                     data-target="#exampleModal{{ $post->id }}" >
-                 Đánh giá  (<?php echo countVote($post->id) ?>)
+                 Đánh giá  (<span id="resultVote{{$post->id}}"><?php echo countVote($post->id) ?></span>)
                 </button>
             @else 
             
@@ -63,11 +65,10 @@
                 <span id="vt{{$post->id}}">  
                     {{number_format(vote($post->id) ,2)}}/ 5
                 </span>  
-                <button  type="button" class="btn btn-primary btn-vote" data-toggle="modal" id="btn-{{$post->id}}"
-                    style="background-color:white;
-	                color:black"    
+                <button  type="button" class="btn btn-primary btnhover" data-toggle="modal" id="btn-{{$post->id}}"
+                       
                     data-target="#exampleModal{{ $post->id }}" >
-                 Đánh giá  (<?php echo countVote($post->id) ?>)
+                 Đánh giá  (<span id="resultVote{{$post->id}}"><?php echo countVote($post->id) ?></span>)
                 </button>
             @endif
                 

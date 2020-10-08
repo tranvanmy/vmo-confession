@@ -52,6 +52,7 @@ class AjaxLikeController extends Controller
     public function getLike($idPost){
         //return "toanto";
         $post = Post::find($idPost);
+        
         $like_create = new Like();
         $like_create->id_user = Auth::user()->id;
         $like_create->value = 1;
@@ -70,7 +71,7 @@ class AjaxLikeController extends Controller
         //$post = Post::find($idPost);
         $like_delete = Like::where('id_user','=',Auth::user()->id)->where('value','=',1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->delete();
         $count_like = count(Like::where('value','=',1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->get());
-        echo "".$count_like."<button id='btnLike' name='btnLike' value=".$idPost." class='bg-dark text-white btn-like'>
+        echo "".$count_like."<button id='btnLike' name='btnLike' value=".$idPost." class='btn btn-default btn-like'>
              Like
             </button>";
     }
@@ -96,7 +97,7 @@ class AjaxLikeController extends Controller
         $post = Post::find($idPost);
         $dislike_delete = Like::where('id_user','=',Auth::user()->id)->where('value','=',-1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->delete();
         $count_dislike = count(Like::where('value','=',-1)->where('likeable_type','=','App\Models\Post')->where('likeable_id','=',$idPost)->get());
-        echo "".$count_dislike."<button id='btndisLike' name='btndisLike' value=".$post->id." class='bg-dark text-white btn-dislike'>
+        echo "".$count_dislike."<button id='btndisLike' name='btndisLike' value=".$post->id." class='btn btn-default btn-dislike'>
              disLike
             </button>";
     }
@@ -228,7 +229,10 @@ class AjaxLikeController extends Controller
         // "  </button>";
 
         $tb = number_format(vote($idpost) ,2);       
-        echo "$tb/ 5";
+        //echo "$tb/ 5";
+        $arr = array('tb' => $tb, 'sl' => countVote($idpost));
+        // echo "$tb/ 5";
+        echo json_encode($arr);
         // dd($request->all());
     }
 }

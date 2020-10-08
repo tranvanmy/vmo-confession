@@ -13,7 +13,8 @@ class UserController extends Controller
     //
     public function getDanhSach(){
         $users = User::all();
-        return view('admin.user.danhsach',['users'=>$users]);
+        $model_has_roles = model_has_role::all();
+        return view('admin.user.danhsach',['users'=>$users,'model_has_roles'=>$model_has_roles]);
     }
 
     public function xoa($idUser){

@@ -29,7 +29,7 @@
                        <th>Thể loại</th>
                        <th>Tiêu đề</th>
                        <th>Nội dung</th>
-                       <th>Created_at</th>
+                       <th>Ngày tạo</th>
                        <th>Xóa</th>
                        <th>Duyệt bài</th>
                    </tr>

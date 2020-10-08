@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="navbar-brand" href="homepage"><img src="image/logo.PNG" width="85px" height="60px" alt=""></a>
+        <a class="" href="homepage"><img src="image/logo.PNG" width="85px" height="60px" class="img-rounded" alt="Cinque Terre"></a>
 
 
     </div>
@@ -26,7 +26,9 @@
 
                 <li><a href="nguoidung"><i class="fa fa-user fa-fw"></i>{{Auth::user()->name}}</a>
                 </li>
-                <li><a href="admin/user/sua/{{Auth::user()->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                {{-- <li><a href="admin/user/sua/{{Auth::user()->id}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                </li> --}}
+                <li><a href="nguoidung"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="dangxuatadmin"><i class="fa fa-sign-out fa-fw"></i>Logout</a>

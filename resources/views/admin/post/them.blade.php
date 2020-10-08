@@ -63,8 +63,8 @@
                         <input type="date" name="published_at" id="published_at" name="bday" disabled="">
                     </div>
                         
-                    <button type="submit" class="btn btn-default">Thêm</button> 
-                    <button type="reset" class="btn btn-default">Làm mới</button>
+                    <button type="submit" class="btn btn-primary">Thêm</button> 
+                    <button type="reset" class="btn btn-primary">Làm mới</button>
                 <form>
             </div>
         </div>

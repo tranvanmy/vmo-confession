@@ -5,7 +5,7 @@
     <h5>
         <a href="chitietbaipost/{{ $post->id }}"><b>#{{ $post->id }}:</b> {{ $post->title }}</a>
     </h5>
-    <p>{{ $post->content }}</p>
+    <p>{!! $post->content !!}</p>
 
     @include('layout.like')
 

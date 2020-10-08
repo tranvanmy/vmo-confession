@@ -21,7 +21,7 @@
                                 @endif
                             @endfor
                         </select>
-                        <button  class=".btn-thongkepost">Xem</button>
+                        <button  class="btn-primary btn-thongkepost">Xem</button>
                         </form>
                     </h6>
                 </div>

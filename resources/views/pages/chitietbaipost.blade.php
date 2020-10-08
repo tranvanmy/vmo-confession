@@ -201,7 +201,7 @@
                    <!-- item -->
                    <div class="row" style="margin-top: 10px;">
                        <div class="col-md-5">
-                           <a href="">
+                           <a href="chitietbaipost/{{$plq->id}}">
                                <img class="img-responsive" src="image/user/user_icon_153312.png" alt="">
                            </a>
                        </div>
@@ -226,7 +226,7 @@
                    <!-- item -->
                    <div class="row" style="margin-top: 10px;">
                        <div class="col-md-5">
-                           <a href="">
+                           <a href="chitietbaipost/{{$pmn->id}}">
                                <img class="img-responsive" src="image/user/user_icon_153312.png" alt="">
                            </a>
                        </div>

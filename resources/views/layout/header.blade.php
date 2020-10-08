@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a href="homepage"><img src="image/logovmo.png" width="85px" height="60px" alt=""></a>
+            <a href="homepage"><img src="image/logo.PNG" width="85px" height="60px" alt=""></a>
 
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->

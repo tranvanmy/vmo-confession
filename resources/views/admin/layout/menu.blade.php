@@ -39,7 +39,8 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="far fa-thumbs-up"></i>Thể loại<span class="fa arrow"></span></a>
+                <a href="#"><i class="fas fa-user-alt"></i>Thể loại<span class="fa arrow"></span></a>
+                {{-- <a href="#"><i class="far fa-thumbs-up"></i>Thể loại<span class="fa arrow"></span></a> --}}
                 
                 <ul class="nav nav-second-level">
                     <li>

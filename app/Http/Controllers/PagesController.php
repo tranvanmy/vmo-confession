@@ -42,6 +42,7 @@ class PagesController extends Controller
     		
     	}
     }
+    
     function getDangXuat()
     {
         Auth::logout();
@@ -208,7 +209,7 @@ class PagesController extends Controller
         return redirect('admin/post/danhsachdaduyet');
 
 
-
+    }
 
     public function getContact()
     {

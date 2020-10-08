@@ -1,0 +1,9 @@
+.btnhover{
+    color: black;
+    background-color: white;
+    
+}
+.btnhover:hover{
+    background-color:rgba(129, 119, 119, 0.411);
+    color: black;
+}

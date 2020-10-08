@@ -44,8 +44,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1" style="color:blue">Nội dung</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                name="content"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+                                            {{-- <textarea id="demo" class="form-control ckeditor" name="content" id="content" rows = "3"></textarea> --}}
+
                                             <span id="show-error"></span>
                                         </div>
 

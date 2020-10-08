@@ -52,7 +52,7 @@
 							  	<input type="password" class="form-control password" name="passwordAgain" aria-describedby="basic-addon1" disabled="" />
 							</div>
 							<br>
-							<button type="submit" class="btn btn-default">Thay đổi
+							<button type="submit" class="btn btn-primary">Thay đổi
 							</button>
 
 				    	</form>

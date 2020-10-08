@@ -84,13 +84,13 @@
                             {{$count_likeCm}}
                             @if ($like_check == true)
                 
-                                <button id="btnLike" name="btnLike" value="{{$cm->id}}" class="btn-likecm">
+                                <button id="" name="btnLike" value="{{$cm->id}}" class="btn-likecm">
                                     Like
                                 </button>
                             
                             @else 
                             
-                                <button id="btnDaLike" name="btnDaLike" value="{{$cm->id}}" class="btn-dalikecm" >
+                                <button id="" name="btnDaLike" value="{{$cm->id}}" class="btn-dalikecm" >
                                     <font color="0000FF">Đã Like</font>
                                 </button>
                             

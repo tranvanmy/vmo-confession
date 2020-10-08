@@ -8,8 +8,8 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="navbar-brand" href="homepage">Admin - Vmo confession</a>
-        {{-- <a class="navbar-brand" href="homepage"><img src="image/logo.PNG" width="85px" height="60px" alt=""></a> --}}
+        <a class="navbar-brand" href="homepage"><img src="image/logo.PNG" width="85px" height="60px" alt=""></a>
+
 
     </div>
     <!-- /.navbar-header -->

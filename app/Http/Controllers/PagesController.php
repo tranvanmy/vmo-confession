@@ -7,8 +7,10 @@ use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Tukhoa;
 use App\Models\User;
 use App\Models\Vote;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -139,23 +141,23 @@ class PagesController extends Controller
             // ->orwhere('content','like',"%$keyword%")->orderBy('published','DESC')->take(30)->paginate(10);
             $post = Post::where(function($query) use ($keyword){
                 $query->where('published',1)
-                    ->where('title','like',"%$keyword%");
+                    ->where('title','like','%'.$keyword.'%');
             })->orwhere(function($query) use ($keyword) {
                 $query->where('published',1)
-                    ->where('content','like',"%$keyword%");
+                    ->where('content','like','%'.$keyword.'%');
             })->orderBy('published_at','DESC')->take(30)->paginate(10);
         }else{
             // $post = Category::find($request->category)->post()->where('title','like',"%$keyword%")
             // // ->orwhere('content','like',"%$keyword%")
             // ->get();
             $post = Post::where(function($query) use ($keyword,$id_category){
-                    $query->where('title','like',"%$keyword%")
+                    $query->where('title','like','%'.$keyword.'%')
                     ->where('published','=',1)
                     ->whereHas('category',function($query) use ($id_category){
                         $query->where('id',$id_category);
                     });
                 })->orwhere(function($query) use ($keyword,$id_category){
-                $query->where('content','like',"%$keyword%")
+                $query->where('content','like','%'.$keyword.'%')
                 ->where('published','=',1)
                 ->whereHas('category',function($query) use ($id_category){
                     $query->where('id',$id_category);
@@ -190,11 +192,36 @@ class PagesController extends Controller
 		$post = new Post();
 		$post->id_category =$request->category;
 		$post->title = $request->title;
-		$post->content = $request->content;
-		$post->published = 0;
+        $post->content = $request->content;
+        
+        //thử nghiệm
+        $diem = 10;
+        $str = $request->content;
+        $tukhoa = Tukhoa::all();
+        foreach ($tukhoa as $value){
+            $sub = $value->body;
+            if (strlen(strstr($str, $sub)) > 0) {
+                $diem = $diem - 1;
+                if($diem < 0){
+                    $diem = 0;
+                }
+              }
+        }
+        if($diem == 10){
+            $post->published = 1;
+            $post->published_at = Carbon::now();
+            $post->diem = $diem;
+            $post->save();
+            return redirect('homepage')->with('thongbao','Đăng bài thành công');
+        }else {
+            $post->published = 0;
+            $post->diem = $diem;
+            $post->save();
+		    return redirect('homepage')->with('thongbao','Đăng bài thành công,Bạn hãy chờ duyệt');
+        }
 
-		$post->save();
-		return redirect('homepage')->with('thongbao','Đăng bài thành công,Bạn hãy chờ duyệt');
+        // $post->save();
+		// return redirect('homepage')->with('thongbao','Đăng bài thành công,Bạn hãy chờ duyệt');
     }
     public function getPostbyCategory($id_category)
     { 

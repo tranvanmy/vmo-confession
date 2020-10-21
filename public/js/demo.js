@@ -25,6 +25,7 @@
         $('#exampleFormControlTextarea1').on('keyup', function () {
             // console.log($(this).val().length)
                     if($('#exampleFormControlTextarea1').val().length > 5 ) {
+                        $('#show-error').html('').css('color', 'red')
                         is_area = true
                         test(is_area, is_title, is_select)
                     }else{

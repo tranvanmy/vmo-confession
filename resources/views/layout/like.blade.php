@@ -88,7 +88,7 @@
                                 <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
                                 @csrf
                                 <div class="modal-body">
-                                    <div class="container">
+                                    {{-- <div class="container"> --}}
 
                                         <label>Đánh giá: </label>
                                         <select name="point" id="point{{$post->id}}">
@@ -101,7 +101,7 @@
 
                                         </select>
 
-                                    </div>
+                                    {{-- </div> --}}
 
                                 </div>
                                 <div class="modal-footer">

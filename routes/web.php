@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ThongKeController;
+use App\Http\Controllers\TuKhoaController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
@@ -69,10 +70,6 @@ Route::post('nguoidung',[PagesController::class,'postNguoiDung']);
 
 Route::get('chitietbaipost/{id}',[ChiTietBaiPostController::class,'getChitiet']);
 Route::get('dangxuat',[PagesController::class,'getDangXuat']);
-});
-
-
-
 
 Route::post('comment/{id}',[ChiTietBaiPostController::class,'postComment']);
 Route::post('repcomment/{idcm}/{idpost}',[ChiTietBaiPostController::class,'postRepComment']);
@@ -94,6 +91,9 @@ Route::get('dalikecommentrep/{id}',[AjaxLikeController::class,'getDaLikeCommentR
 
 Route::get('dislikecommentrep/{id}',[AjaxLikeController::class,'getdisLikeCommentRep']);
 Route::get('dadislikecommentrep/{id}',[AjaxLikeController::class,'getDadisLikeCommentRep']);
+});
+
+
 
 Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
     Route::group(['prefix'=>'post'],function(){
@@ -125,7 +125,14 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         Route::get('them',[UserController::class,'getThem']);
         Route::post('them',[UserController::class,'postThem']);
     });
-
+    Route::group(['prefix'=>'tukhoa'],function(){
+        Route::get('danhsach',[TuKhoaController::class,'getDanhSach']);
+        Route::get('xoa/{id}',[TuKhoaController::class,'xoa']);
+        Route::get('sua/{id}',[TuKhoaController::class,'getSua']);
+        Route::post('sua/{id}',[TuKhoaController::class,'postSua']);
+        Route::get('them',[TuKhoaController::class,'getThem']);
+        Route::post('them',[TuKhoaController::class,'postThem']);
+    });
 
 });
 

@@ -64,6 +64,18 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <li>
+                <a href="#"><i class="fas fa-user-alt"></i> Từ khóa<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="admin/tukhoa/danhsach">Danh Sách</a>
+                    </li>
+                    <li>
+                        <a href="admin/tukhoa/them">Thêm</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
           
         </ul>
     </div>

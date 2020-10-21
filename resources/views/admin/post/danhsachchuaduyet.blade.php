@@ -30,6 +30,7 @@
                        <th>Tiêu đề</th>
                        <th>Nội dung</th>
                        <th>Ngày tạo</th>
+                       <th>Điểm</th>
                        <th>Xóa</th>
                        <th>Duyệt bài</th>
                    </tr>
@@ -41,6 +42,7 @@
                             <td>{{$pt->title}}</td>
                             <td>{!!$pt->content!!}</td>
                             <td>{{$pt->created_at}}</td>
+                            <td>{{$pt->diem}}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/post/xoa/{{'danhsachchuaduyet'}}/{{$pt->id}}"> Xóa</a></td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/post/publish/{{$pt->id}}">Duyệt</a></td>
                         </tr>

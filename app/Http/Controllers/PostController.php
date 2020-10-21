@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function getDanhSachChuaDuyet(){
-        $posts = Post::where('published','=',0)->orderBy('created_at','DESC')->get();
+        $posts = Post::where('published',0)->orderBy('created_at','DESC')->get();
         // $post = Post::withCount(['likes'=>function($query){
         //     $query->where('likeable_type','App\Models\Post')
         //     ->where('value',1);

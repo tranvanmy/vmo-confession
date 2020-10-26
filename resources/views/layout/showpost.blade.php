@@ -10,3 +10,5 @@
     @include('layout.like')
 
 @endforeach
+{{-- {!! $posthome->links('vendor.pagination.bootstrap-4') !!} --}}
+

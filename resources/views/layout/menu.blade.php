@@ -1,11 +1,16 @@
 <div class="col-md-3 ">
     <ul class="list-group" id="menu" style="cursor:pointer">
         <li href="homepage" class="list-group-item menu1 active" style="cursor:auto">
-            Menu
+            Thể Loại
         </li>
         
+        @foreach($category as $tl)
+            <li href="#" class="list-group-item menu1">
+                <a href="PostbyCategory/{{$tl->id}}">{{ $tl->title}}</a>
+            </li>
+        @endforeach
 
-        <li href="#" class="list-group-item menu1">
+        {{-- <li href="#" class="list-group-item menu1">
             Thể Loại
         </li>
         <ul>
@@ -29,7 +34,7 @@
                 <a href="topvote">Top Đánh Giá</a>
             </li>
 
-        </ul>
+        </ul> --}}
 
 
 

@@ -1,5 +1,6 @@
 <?php 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 if (!function_exists('likePost')) {
     function likePost($id)
@@ -110,6 +111,15 @@ if (!function_exists('likePost')) {
             $post = Post::find($id);
             $comments = $post->comments->where('id_parent','like',NULL);
             return $comments;
+        }
+    }
+    //hiện tên ng comment
+    if (!function_exists('getTenCmt')) {
+        function getTenCmt($id)
+        {
+            $user = User::find($id);
+            $ten_user = $user->name;
+            return $ten_user;
         }
     }
 }

@@ -41,6 +41,15 @@
                    <div class="form-group">
                        <textarea class="form-control" rows="3" name="NoiDung"></textarea>
                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="trangthai" value="andanh" checked="" type="radio">Ẩn danh
+                        </label>
+                        <label class="radio-inline">
+                            <input name="trangthai" value="chinhdanh" type="radio">Chính danh
+                        </label>
+                    </div>
                    <button type="submit" class="btn btn-primary">Gửi</button>
                </form>
            </div>
@@ -74,9 +83,18 @@
                    <img class="media-object" src="image/user/user_icon_153312.png" alt="">
                </a>
                <div class="media-body">
-                   <h4 class="media-heading">User
-                       <small>{{$cm->created_at}}</small>
-                   </h4>
+                @if ($cm->id_user != null)
+                    <h4 class="media-heading">
+                        <font color="#0000AA">{{getTenCmt($cm->id_user)}}.</font>
+                        <small>{{$cm->created_at}}</small>
+                    </h4>
+                @else
+                    <h4 class="media-heading">
+                        <font color="#0000AA">User</font>
+                        <small>{{$cm->created_at}}</small>
+                    </h4>  
+                @endif
+                   
                    <div class="well">
                    {{$cm->body}}
                    <h6>
@@ -133,6 +151,17 @@
                         }
                     ?>
                    <div class="well well-sm">
+                    @if ($cmchil->id_user != null)
+                        <h5 class="media-heading">
+                            <font color="#0000AA">{{getTenCmt($cmchil->id_user)}}.</font>
+                            <small>{{$cmchil->created_at}}</small>
+                        </h5>
+                    @else
+                        <h5 class="media-heading">
+                            <font color="#0000AA">User</font>
+                            <small>{{$cmchil->created_at}}</small>
+                        </h5>  
+                    @endif
                        {{$cmchil->body}}
                        
                        <h6>
@@ -178,7 +207,16 @@
                            <div class="form-group">
                                 <input type="text" class="form-control" name="repcomment">
                             </div>
-                           <button type="submit" >bình luận</button>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <label class="radio-inline">
+                                    <input name="trangthai" value="andanh" checked="" type="radio">Ẩn danh
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="trangthai" value="chinhdanh" type="radio">Chính danh
+                                </label>
+                            </div>
+                           <button type="submit" class="btn btn-primary" >bình luận</button>
                        </form>
                    </div>
                    

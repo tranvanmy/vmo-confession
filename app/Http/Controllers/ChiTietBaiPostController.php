@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Null_;
+use SebastianBergmann\Environment\Console;
 
 class ChiTietBaiPostController extends Controller
 {
@@ -59,7 +60,13 @@ class ChiTietBaiPostController extends Controller
        $comment = new Comment();
        $comment->id_post = $idPost;
        $comment->body = $request->NoiDung;
-       $comment->save();
+       if($request->trangthai == 'andanh'){
+            $comment->save();
+        }
+        if($request->trangthai == 'chinhdanh'){
+            $comment->id_user = Auth::user()->id;
+            $comment->save();
+        }
 
         //return redirect("tintuc/$idTinTuc/".$tintuc->TieuDeKhongDau.".html");
         return redirect("chitietbaipost/".$idPost);
@@ -80,8 +87,14 @@ class ChiTietBaiPostController extends Controller
        $comment->id_post = $idPost;
        $comment->body = $request->repcomment;
        $comment->id_parent = $idComment;
-       $comment->save();
-
+       
+       if($request->trangthai == 'andanh'){
+            $comment->save();
+       }
+       if($request->trangthai == 'chinhdanh'){
+            $comment->id_user = Auth::user()->id;
+            $comment->save();
+       }
         //return redirect("tintuc/$idTinTuc/".$tintuc->TieuDeKhongDau.".html");
         return redirect("chitietbaipost/".$idPost);
     }

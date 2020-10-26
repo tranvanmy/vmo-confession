@@ -19,8 +19,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color:#337AB7; color:white;">
                     <h2 style="margin-top:0px; margin-bottom:0px;">Thể Loại: {{$categoryPost->title}}</h2>
-
-                    @include('layout.post')
                 </div>
 
                 @if(session('thongbao'))
@@ -28,7 +26,7 @@
                         {{ session('thongbao') }}
                     </div>
                 @endif
-
+                @include('layout.post')
                 @foreach($post as $post)
                     <hr>
                     <h4>Vmo Confession</h4>

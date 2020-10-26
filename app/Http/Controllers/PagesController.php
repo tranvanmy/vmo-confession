@@ -126,7 +126,8 @@ class PagesController extends Controller
     {
         
         $post = Post::where('published','1')->orderBy('published_at','DESC')->paginate(5);
-		// $post = Post::all();
+        // $post = Post::all();
+        
         
         return view('pages.trangchu',['posthome'=>$post]);
     }

@@ -30,7 +30,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+        {{-- thử nghiệm --}}
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/vote.css" rel="stylesheet"> 
+        
 </head>
 
 <body>
@@ -63,7 +66,11 @@
     <script src="js/starrr.js"></script>
     <!-- <script src="js/comment.js"></script> -->
     <script src="js/all.js"></script>
-    
+
+    {{-- thử nghiệm --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+    <script src="js/vote.js" type="text/javascript"></script>  --}}
+    @yield('scriptnd')
 </body>
 
 </html>

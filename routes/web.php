@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AjaxLikeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CauHoiConTroller;
 use App\Http\Controllers\ChiTietBaiPostController;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
@@ -61,7 +62,9 @@ Route::get('toplike', [PagesController::class,'getTopLike']);
 Route::get('topcomment', [PagesController::class,'getTopComment']);
 Route::get('topvote', [PagesController::class,'getTopVote']);
 Route::get('contact', [PagesController::class,'getContact']);
+Route::get('danhgia', [PagesController::class,'getDanhGia']);
 Route::get('introduct', [PagesController::class,'getIntroduct']);
+Route::post('diemcauhoi', [PagesController::class,'getDiemCauHoi']);
 
 
 Route::get('nguoidung',[PagesController::class,'getNguoiDung']);
@@ -133,7 +136,16 @@ Route::group(['prefix'=>'admin','middleware'=>'adminlogin'],function(){
         Route::get('them',[TuKhoaController::class,'getThem']);
         Route::post('them',[TuKhoaController::class,'postThem']);
     });
-
+    Route::group(['prefix'=>'cauhoi'],function(){
+        Route::get('danhsach',[CauHoiConTroller::class,'getDanhSach']);
+        Route::get('xoa/{id}',[CauHoiConTroller::class,'xoa']);
+        Route::get('sua/{id}',[CauHoiConTroller::class,'getSua']);
+        Route::post('sua/{id}',[CauHoiConTroller::class,'postSua']);
+        Route::get('them',[CauHoiConTroller::class,'getThem']);
+        Route::post('them',[CauHoiConTroller::class,'postThem']);
+        Route::get('reset',[CauHoiConTroller::class,'getReset']);
+        Route::get('dung',[CauHoiConTroller::class,'getDung']);
+    });
 });
 
 Route::get('dangxuatadmin',[UserController::class,'getDangXuatAdmin']);

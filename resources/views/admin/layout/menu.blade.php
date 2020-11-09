@@ -76,6 +76,18 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <li>
+                <a href="#"><i class="fas fa-user-alt"></i> Câu hỏi<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="admin/cauhoi/danhsach">Danh Sách</a>
+                    </li>
+                    <li>
+                        <a href="admin/cauhoi/them">Thêm</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
           
         </ul>
     </div>

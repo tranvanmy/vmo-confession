@@ -1,3 +1,5 @@
+
+
 <table class="table table-striped table-bordered table-hover">
     <tr align="center">
         {{-- <input type="hidden" name="idPost" id="idPost" value={{$post->id }}>
@@ -78,31 +80,38 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ $post->title }}</h5>
+                            <label class="modal-title" id="exampleModalLabel">Đánh giá : {{ $post->title }}</label>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        
+                        <div class="main">
                             <form action="" method="post" id="myForm{{$post->id}}">
-                                <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 @csrf
-                                <div class="modal-body">
-                                    {{-- <div class="container"> --}}
-
-                                        <label>Đánh giá: </label>
-                                        <select name="point" id="point{{$post->id}}">
-
+                               
+                                <div class="modal-body" >
+                                        {{-- <select name="point" id="point{{$post->id}}">
                                             <option value="1">{{ 1 }}</option>
                                             <option value="2">{{ 2 }}</option>
                                             <option value="3">{{ 3 }}</option>
                                             <option value="4">{{ 4 }}</option>
                                             <option value="5">{{ 5 }}</option>
-
-                                        </select>
-
-                                    {{-- </div> --}}
-
+                                        </select> --}}
+                                            
+                                        <span class="rating-star" name="point" id="point{{$post->id}}">
+                                            <input type="radio" name="point" value="5"><span class="star"></span>
+        
+                                            <input type="radio" name="point" value="4"><span class="star"></span>
+                                        
+                                            <input type="radio" name="point" value="3"><span class="star"></span>
+                                        
+                                            <input type="radio" name="point" value="2"><span class="star"></span>
+                                        
+                                            <input type="radio" name="point" value="1"><span class="star"></span>
+                                            </span>
+                                            {{-- <p>Cảm ơn vì đánh giá của bạn</p> --}}
+                                    
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -111,7 +120,32 @@
                                         >Gửi</button>
                                 </div>
                             </form>
+                        </div>
 
+                            {{-- thử nghiệm --}}
+                            {{-- <div class="main">
+                                <form action="" method="post" id="myForm{{$post->id}}">
+                                <span class="rating-star" name="point" id="point{{$post->id}}">
+                                    <input type="radio" name="rating" value="5"><span class="star"></span>
+
+                                    <input type="radio" name="rating" value="4"><span class="star"></span>
+                                
+                                    <input type="radio" name="rating" value="3"><span class="star"></span>
+                                
+                                    <input type="radio" name="rating" value="2"><span class="star"></span>
+                                
+                                    <input type="radio" name="rating" value="1"><span class="star"></span>
+                                </span>
+                                <p>Thanks For Giving <span id="selected-rating" class="selected-rating" >0</span> Stars.</p>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button   type="submit" value="{{$post->id}}" 
+                                        class="btn btn-primary btn-vote" 
+                                        >Gửi</button>
+                                </div>
+                                </form>
+                            </div> --}}
+                            {{-- đến đây --}}
                     </div>
                 </div>
             </div>

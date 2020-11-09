@@ -6,7 +6,7 @@
    <div class="container-fluid">
        <div class="row">
            <div class="col-lg-12">
-               <h1 class="page-header">Thể loại
+               <h1 class="page-header">Từ khóa
                    <small>Danh sách</small>
                </h1>
            </div>

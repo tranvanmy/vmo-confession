@@ -61,7 +61,7 @@ $(document).ready(function(){
 
     $(document).on('click','.btn-dadislike', function(){
       var idPost = $(this).val();
-      $.get('dadislikep/'+idPost,function(data){
+      $.get('dadislike/'+idPost,function(data){
           $("#dislikep"+idPost).html(data);
       });
     });
@@ -184,6 +184,9 @@ $(document).ready(function(){
       },
     });
   });
+
+  //phiếu đánh giá
+  
 
 });
 

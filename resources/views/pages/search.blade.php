@@ -15,7 +15,7 @@
 
         <?php
             function changecolor($str, $tukhoa){
-
+                // $tukhoa = vn_str_filter($tukhoa);
                 return str_replace($tukhoa, "<span style='color:red';>$tukhoa</span>",$str);
             }
         ?>

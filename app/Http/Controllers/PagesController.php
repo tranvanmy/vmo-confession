@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CauHoi;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -286,4 +287,37 @@ class PagesController extends Controller
         return view('pages.introduce');
 
     }
+
+    public function getDanhGia(){
+        $cauhois = CauHoi::all()->where('trangthai',1);
+        return view('pages.danhgia',['cauhois'=>$cauhois]);
+    }
+
+    // đánh giá câu hỏi
+    public function getDiemCauHoi(Request $request){
+        $cauhois = CauHoi::all()->where('trangthai',1);;
+        $sl = 1;
+        foreach ($cauhois as $cauhoi){
+            $dg = 'danhgia'.(String)$sl;
+                $diemTong = $cauhoi->diem;
+                echo($diemTong);
+                echo(" ");
+                $diemTong = $diemTong + $request->$dg;
+                echo($diemTong);
+                echo(" ");
+                echo($request->$dg);
+                echo(" ");
+                $cauhoi->diem = $diemTong;
+              
+                $soLan = $cauhoi->luot_danh_gia;
+                $soLan++;
+                $cauhoi->luot_danh_gia = $soLan;
+
+                $sl++;
+
+                  $cauhoi->save();
+            }
+        return redirect('danhgia')->with('thongbao','bạn đã hoàn thành phiếu đánh giá');  
+    }
+
 }
